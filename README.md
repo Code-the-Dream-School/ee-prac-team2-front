@@ -31,7 +31,7 @@ Note: In the below example, the group's front-end repository was named `bb-pract
 
 # React TypeScript template with Vite
 
-This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) boilerplate built with [Vite](https://vitejs.dev).
+This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) boilerplate built with [Vite](https://vitejs.dev), based on [a community template](https://github.com/fabien-ml/react-ts-vite-template) by [@fabien-ml](https://github.com/fabien-ml).
 
 ## What's inside?
 
