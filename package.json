@@ -5,13 +5,12 @@
   "description": "Front-End Repo for Team 2 of Emu/Echidna Practicum",
   "scripts": {
     "build": "npm run typecheck && vite build",
-    "commit": "git-cz",
     "dev": "vite",
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx, --fix --ignore-path .gitignore",
     "prepare": "husky install",
     "serve": "npm run build && vite preview --port 3000",
-    "start": "vite",
+    "start": "npm run dev",
     "test:e2e": "start-server-and-test serve http://127.0.0.1:3000/ 'cypress open'",
     "test:e2e:ci": "start-server-and-test serve http://127.0.0.1:3000/ 'cypress run'",
     "test:unit": "jest --watch",
@@ -29,19 +28,11 @@
     ],
     "package.json": "npx sort-package-json"
   },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.2",
-    "@commitlint/config-conventional": "^17.0.2",
-    "@commitlint/cz-commitlint": "^17.0.0",
     "@cypress/vite-dev-server": "^3.0.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -55,7 +46,6 @@
     "@typescript-eslint/parser": "^5.29.0",
     "@vitejs/plugin-legacy": "^1.8.2",
     "@vitejs/plugin-react": "^1.3.2",
-    "commitizen": "^4.2.4",
     "cypress": "^10.11.0",
     "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
