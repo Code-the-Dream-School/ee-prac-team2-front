@@ -21,7 +21,7 @@ export async function getAllData(url: string) {
 
     if (axios.isAxiosError(error)) {
       return {
-        data: "API request failed! Did you remember to `npm start` the backend app?",
+        data: "API request failed! Did you remember to `npm run dev` the backend app?",
       };
     }
   }
