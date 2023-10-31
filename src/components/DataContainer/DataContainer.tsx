@@ -7,11 +7,9 @@ export default function DataContainer() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    (async () => {
-      const response = await getAllData(URL);
-
+    getAllData(URL).then((response) => {
       setMessage(response.data);
-    })();
+    });
 
     return () => {
       console.log("unmounting");
