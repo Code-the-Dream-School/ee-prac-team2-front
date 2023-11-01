@@ -5,11 +5,11 @@ This will be the front-end for your team's practicum project.
 It is suggested that you run these instructions **after** you setup the back-end server first.
 You can go through these steps during your first group meeting in case you need assistance from your mentors.
 
-You will have two folders inside one team folder (one for front-end and one for back-end). Name the parent folder something appropriate (in the below example we title it "Practicum Project").  Then clone directly (do not fork and clone) the front and back repos while inside the parent ("Practicum Project") project folder.
+You will have two folders inside one team folder (one for front-end and one for back-end). Name the parent folder something appropriate (in the below example we title it "Practicum Project"). Then clone directly (do not fork and clone) the front and back repos while inside the parent ("Practicum Project") project folder.
 
-![folders](images/folder_structure.png)
+![folders](src/assets/readme/folder_structure.png)
 
->The front-end app (React) will be running on port 3000. The back-end server will be running on port 8000. You will need to run both the front-end app and the back-end server at the same time to test your app.
+> The front-end app (React) will be running on port 3000. The back-end server will be running on port 8000. You will need to run both the front-end app and the back-end server at the same time to test your app.
 
 ### Setting up local development environment
 
@@ -21,8 +21,101 @@ You will have two folders inside one team folder (one for front-end and one for 
 6. Now you have your front-end and back-end running locally!
 
 #### Running the front-end server in Visual Studio Code
-Note: In the below example, the group's front-end repository was named `bb-practicum-team1-front` and the back-end repository was named `bb-practicum-team-1-back`.  Your repository will have a different name, but the rest should look the same.
-![vsc running](images/front-end-running-vsc.png)
+
+Note: In the below example, the group's front-end repository was named `bb-practicum-team1-front` and the back-end repository was named `bb-practicum-team-1-back`. Your repository will have a different name, but the rest should look the same.
+![vsc running](src/assets/readme/front-end-running-vsc.png)
 
 #### Running the front-end server in the browser
-![browser running](images/front-end-running-browser.png)
+
+![browser running](src/assets/readme/front-end-running-browser.png)
+
+# React TypeScript template with Vite
+
+This is a [React](https://reactjs.org) + [TypeScript](https://www.typescriptlang.org/) boilerplate built with [Vite](https://vitejs.dev), based on [a community template](https://github.com/fabien-ml/react-ts-vite-template) by [@fabien-ml](https://github.com/fabien-ml).
+
+## What's inside?
+
+- [ReactJS](https://reactjs.org)
+- [Vite](https://vitejs.dev)
+- [TypeScript](https://www.typescriptlang.org)
+- [Jest](https://jestjs.io)
+- [Testing Library](https://testing-library.com)
+- [Cypress](https://www.cypress.io)
+- [ESLint](https://eslint.org)
+- [Prettier](https://prettier.io)
+- [Polyfills](https://github.com/vitejs/vite/tree/main/packages/plugin-legacy#readme)
+
+## Getting started
+
+1. Create the project.
+
+   ```bash
+   npx degit fabien-ml/react-ts-vite-template my-app
+   ```
+
+2. Access the project directory.
+
+   ```bash
+   cd my-app
+   ```
+
+3. Initialize a git repository.
+
+   ```bash
+   git init
+   ```
+
+4. Install dependencies.
+
+   ```bash
+   npm install
+   ```
+
+5. Start dev server with hot reload at http://localhost:3000.
+   ```bash
+   npm run dev
+   ```
+
+## Recommended VS Code extensions
+
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+## Other commands
+
+### Lint commands
+
+```bash
+npm run lint
+```
+
+### Build commands
+
+```bash
+npm run build
+```
+
+### Run the app in production mode at http://localhost:3000.
+
+```bash
+npm run serve
+```
+
+### Test commands
+
+- Run unit tests and watch
+  ```bash
+  npm run test:unit
+  ```
+- Run unit tests with coverage
+  ```bash
+  npm run test:unit:coverage
+  ```
+- Run e2e tests
+  ```bash
+  npm run test:e2e
+  ```
+
+## License
+
+This project is licensed under the MIT License.
