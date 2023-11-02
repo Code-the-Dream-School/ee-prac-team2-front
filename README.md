@@ -1,3 +1,7 @@
+# Team Members
+
+Jillian (@catbus00) is a Code the Dream student studying React.
+
 # Front-End Repo for Node/React Practicum
 
 This will be the front-end for your team's practicum project.
@@ -119,7 +123,3 @@ npm run serve
 ## License
 
 This project is licensed under the MIT License.
-
-## Team Members 
-
-Jillian is a Code the Dream student studying React. 
