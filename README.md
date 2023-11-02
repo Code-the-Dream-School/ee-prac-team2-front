@@ -119,3 +119,7 @@ npm run serve
 ## License
 
 This project is licensed under the MIT License.
+
+## Team Members 
+
+Jillian is a Code the Dream student studying React. 
