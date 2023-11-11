@@ -42,13 +42,6 @@ const ActivityList = () => {
       voteCount: 0,
       category: "Indoor",
     },
-    {
-      id: 6,
-      name: "Art and Craft Workshop",
-      description: "Get creative with arts and crafts.",
-      voteCount: 0,
-      category: "Indoor",
-    },
   ];
 
   return (
