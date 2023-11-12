@@ -1,11 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const ActivityList = () => {
+interface Activity {
+  id: number;
+  name: string;
+  description: string;
+  voteCount: number;
+  category: string;
+}
+
+const ActivityList: React.FC = () => {
   // Hardcoded activities data
-  const activitiesData = [
+  const activitiesData: Activity[] = [
     {
       id: 1,
       name: "Hiking",
@@ -13,7 +21,6 @@ const ActivityList = () => {
       voteCount: 0,
       category: "Outdoor",
     },
-
     {
       id: 2,
       name: "Cooking Class",
