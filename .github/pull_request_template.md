@@ -1,28 +1,32 @@
 This PR resolves Issue #\__issueNumber_
 
-#Change Summary
+# Change Summary
 
 - Added component \__a_
 - Updated feature **b\_ to do **c* when \_\_d*
 
-##I Had Difficulty With
+## I Had Difficulty With
 
 - \__problem_
 
-#Code Review
-###Starting File
+# Code Review
+
+### Starting File
+
 `/src/components/foo.tsx`
 
-##Visual Example
+## Visual Example
+
 _Video or screenshot which shows the app with this new code applied_
 
-##Testing Steps
-###Example without required interaction
+## Testing Steps
+
+### Example without required interaction
 
 1. Visit `/activities`
 2. Observe initial sort is by Name, descending
 
-###Example with required interaction
+### Example with required interaction
 
 1. Visit `/activities`
 2. Invoke `Sort Popularity ASC` button
@@ -32,7 +36,7 @@ _Video or screenshot which shows the app with this new code applied_
 4. Observe Activities sorted by lowest Votes first
 5. Observe button text changes to `Sort Popularity ASC`
 
-##Testing Checklist
+## Testing Checklist
 
 - [ ] Deleted all debug/log messages
 - [ ] Deleted all commented-out code
@@ -43,7 +47,7 @@ _Video or screenshot which shows the app with this new code applied_
   - [ ] Verified new functionality
   - [ ] Verified no console errors
 
-##Dangers -OPTIONAL
+## Dangers -OPTIONAL
 
 - This code is at risk of breaking:
 
@@ -52,7 +56,7 @@ _Video or screenshot which shows the app with this new code applied_
 
 - This code should not be merged until \__blockingCondition_
 
-##TODO Items -OPTIONAL
+## TODO Items -OPTIONAL
 
 - Breaking this Issue into multiple PRs:
   - \__reasoning_
