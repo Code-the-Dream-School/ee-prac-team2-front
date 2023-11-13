@@ -21,12 +21,12 @@ This PR resolves Issue #
 
 ## Testing Steps
 
-### Example without required interaction
+[//]: # "Simple example"
 
 1. Visit `/activities`
 2. Observe initial sort is by Name, descending
 
-### Example with required interaction
+[//]: # "Detailed example"
 
 1. Visit `/activities`
 2. Invoke `Sort Popularity ASC` button
@@ -50,10 +50,8 @@ This PR resolves Issue #
 ## Dangers -OPTIONAL
 
 - This code is at risk of breaking:
-
   - \__description_
   - \__testingPlan_
-
 - This code should not be merged until \__blockingCondition_
 
 ## TODO Items -OPTIONAL
