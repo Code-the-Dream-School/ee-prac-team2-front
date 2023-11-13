@@ -1,9 +1,9 @@
-This PR resolves Issue #\__issueNumber_
+This PR resolves Issue #
 
 # Change Summary
 
 - Added component \__a_
-- Updated feature **b\_ to do **c* when \_\_d*
+- Updated feature \__b_ to do \__c_ when \__d_
 
 ## I Had Difficulty With
 
@@ -17,7 +17,7 @@ This PR resolves Issue #\__issueNumber_
 
 ## Visual Example
 
-_Video or screenshot which shows the app with this new code applied_
+[//]: # "_Video or screenshot which shows the app with this new code applied_"
 
 ## Testing Steps
 
@@ -62,7 +62,7 @@ _Video or screenshot which shows the app with this new code applied_
   - \__reasoning_
 - Was unable to implement aspects of this Issue:
   - \__reasoning_
-    - Created Issue: #\_
+    - Created Issue: #
 - Found a bug or identified other new work:
   - \__description_
-  - Created Issue: #\_
+  - Created Issue: #
