@@ -52,7 +52,8 @@ This PR resolves Issue #
 - This code is at risk of breaking:
   - \__description_
   - \__testingPlan_
-- This code should not be merged until \__blockingCondition_
+- This code should not be merged until:
+  - \__blockingCondition_
 
 ## TODO Items -OPTIONAL
 
