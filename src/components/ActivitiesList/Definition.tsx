@@ -1,9 +1,7 @@
-interface Activities {
+export interface Activity {
   id: number;
   name: string;
   description: string;
   voteCount: number;
   category: string;
 }
-
-export type { Activities };
