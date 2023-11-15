@@ -7,7 +7,7 @@ This PR resolves Issue #
 
 ## I Had Difficulty With
 
-- \__problem_
+_I initially tried to implement this using our existing components, but ran into <these issues>, so I decided to add a third party component for this task._
 
 # Code Review
 
@@ -47,21 +47,23 @@ This PR resolves Issue #
   - [ ] Verified new functionality
   - [ ] Verified no console errors
 
-## Dangers -OPTIONAL
+## Dangers
 
-- This code is at risk of breaking:
-  - \__description_
-  - \__testingPlan_
+- This code is at risk of breaking something:
+  - _I refactored <this class> to be reused. I tested the other places that class is used as best I could, but other testers and stakeholders should know that there have been code changes in that area._
 - This code should not be merged until:
-  - \__blockingCondition_
+  - _This PR relies on my changes from PR #3. Please review and merge that code first, and then I'll update this branch to include those changes before final code review._
 
-## TODO Items -OPTIONAL
+## TODO
 
 - Breaking this Issue into multiple PRs:
-  - \__reasoning_
+  1. _My code formatter is set to update the entire project based on modern industry standard formatting, so I'm committing the changes it made to improve our code style._
+  2. _The second PR will focus on the new functionality specified by the Issue_
 - Was unable to implement aspects of this Issue:
-  - \__reasoning_
-    - Created Issue: #
+  - _Since the purpose of this task was to get something working and shipped quickly, I decided to ignore typescript for now._
+  - _I created Issue # to come back and add it later_
+  - _Because we are going to revisit this functionality soon, I decided not to spend too much time on <this bit> so that we can prioritize shipping._
+    - _I created Issue # to come back and add it later_
 - Found a bug or identified other new work:
-  - \__description_
-  - Created Issue: #
+  - _I realized we didn't include an `Error` component in this milestone. I couldn't find an Issue for it._
+    - _I created Issue # so we don't forget to come back and replace this placeholder error_
