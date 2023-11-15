@@ -52,7 +52,7 @@ _I initially tried to implement this using our existing components, but ran into
 - This code is at risk of breaking something:
   - _I refactored <this class> to be reused. I tested the other places that class is used as best I could, but other testers and stakeholders should know that there have been code changes in that area._
 - This code should not be merged until:
-  - _This PR relies on my changes from PR #3. Please review and merge that code first, and then I'll update this branch to include those changes before final code review._
+  - _This PR relies on my changes from PR #. Please review and merge that code first, and then I'll update this branch to include those changes before final code review._
 
 ## TODO
 
