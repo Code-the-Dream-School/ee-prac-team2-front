@@ -1,17 +1,18 @@
 import React from "react";
 
-import { Activities } from "./Definition";
-
 interface PropsType<T> {
   items: T[];
-  renderer: (item: T) => React.ReactNode;
+  renderer: (item: T, index: number, arr: T[]) => React.ReactNode;
+  className?: string;
 }
 
-export default function ListView<T extends Activities>(props: PropsType<T>) {
+export default function ListView<T extends { id: number }>(
+  props: PropsType<T>
+) {
   return (
-    <ul>
-      {props.items.map((item) => {
-        return <li key={item.id}>{props.renderer(item)}</li>;
+    <ul className={props.className ?? ""}>
+      {props.items.map((item, index, arr) => {
+        return <li key={item.id}>{props.renderer(item, index, arr)}</li>;
       })}
     </ul>
   );

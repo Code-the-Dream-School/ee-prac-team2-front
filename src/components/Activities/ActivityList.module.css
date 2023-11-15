@@ -1,0 +1,7 @@
+.test li {
+  border: 2px solid black;
+}
+
+.test li button:hover {
+  background-color: darkgreen;
+}

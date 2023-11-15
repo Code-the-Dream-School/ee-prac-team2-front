@@ -1,7 +1,10 @@
-import { Activities } from "./Definition";
+import React from "react";
+
+import styles from "./ActivityList.module.css";
+import { Activity } from "./Definition";
 import ListView from "./ListView";
 
-const builtInActivities: Activities[] = [
+const builtInActivities: Activity[] = [
   {
     id: 1,
     name: "Kayaking",
@@ -48,15 +51,28 @@ const builtInActivities: Activities[] = [
 
 const ActivityList = () => {
   return (
-    <ListView
+    <ListView<Activity>
+      className={styles.test}
       items={builtInActivities}
-      renderer={(activity) => (
-        <div>
+      renderer={(activity, index, arr) => (
+        <>
           <p>{activity.name}</p>
           <p>{activity.description}</p>
           <p>Votes: {activity.voteCount}</p>
           <p>Category: {activity.category}</p>
-        </div>
+          <button
+            onClick={(event) => {
+              console.log(
+                `Clicked ${activity.name} (Activity ${index + 1} of ${
+                  arr.length + 1
+                })`
+              );
+              console.log(event.target);
+            }}
+          >
+            event test
+          </button>
+        </>
       )}
     />
   );
