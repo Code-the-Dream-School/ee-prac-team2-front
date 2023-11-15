@@ -1,6 +1,6 @@
-This PR resolves Issue #
+### This PR resolves Issue
 
-# Change Summary
+## Change Summary
 
 - Add component \__a_
 - Update feature \__b_ to do \__c_ when \__d_
