@@ -1,4 +1,4 @@
-import ListView from "../ItemList/ItemList";
+import ItemList from "../ItemList/ItemList";
 import { Activity } from "./Definition";
 
 interface ActivityListProps {
@@ -7,7 +7,7 @@ interface ActivityListProps {
 
 export default function ActivityList(props: ActivityListProps) {
   return (
-    <ListView<Activity>
+    <ItemList<Activity>
       items={props.activities}
       renderer={(activity) => (
         <div>
