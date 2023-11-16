@@ -1,11 +1,13 @@
 import Logo from "@assets/logo.png";
-import ActivityList from "@components/ActivitiesList/ActivityList";
+import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
 import { Activity } from "@components/ActivitiesList/Definition";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
+import { Person } from "@components/PeopleList/Definition";
+import PeopleList from "@components/PeopleList/PeopleList";
 
 const builtInActivities: Activity[] = [
   {
@@ -52,6 +54,27 @@ const builtInActivities: Activity[] = [
   },
 ];
 
+const people: Person[] = [
+  {
+    id: 1,
+    name: "Person 1",
+    age: 10,
+    profession: "Job 1",
+  },
+  {
+    id: 2,
+    name: "Person 2",
+    age: 20,
+    profession: "Job 2",
+  },
+  {
+    id: 3,
+    name: "Person 3",
+    age: 30,
+    profession: "Job 3",
+  },
+];
+
 export default function App() {
   return (
     <main className={styles.main}>
@@ -68,15 +91,16 @@ export default function App() {
                   }"`}
                 </div>
                 <HelloWorld msg="Hello EE Practicum Team 2!" />
-                <ActivityList activities={builtInActivities} />
+                <ActivitiesList activities={builtInActivities} />
                 <DataContainer />
               </div>
             }
           />
           <Route
             path="/activities"
-            element={<ActivityList activities={builtInActivities} />}
+            element={<ActivitiesList activities={builtInActivities} />}
           />
+          <Route path="/people" element={<PeopleList people={people} />} />
         </Routes>
       </BrowserRouter>
     </main>

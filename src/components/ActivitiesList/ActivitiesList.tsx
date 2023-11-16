@@ -1,16 +1,16 @@
 import ListView from "../ItemList/ItemList";
 import { Activity } from "./Definition";
+import styles from "./ActivityList.module.css";
 
 interface ActivityListProps {
   activities: Activity[];
-  className?: string;
 }
 
-export default function ActivityList(props: ActivityListProps) {
+export default function ActivitiesList(props: ActivityListProps) {
   return (
     <ListView<Activity>
       items={props.activities}
-      className={props.className}
+      className={styles.test}
       renderer={(activity) => (
         <div>
           <p>Name: {activity.name}</p>

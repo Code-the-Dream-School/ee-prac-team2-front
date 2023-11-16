@@ -1,0 +1,26 @@
+.test {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  background: linear-gradient(
+      217deg,
+      rgba(255, 0, 0, 0.8),
+      rgba(255, 0, 0, 0) 70.71%
+    ),
+    linear-gradient(127deg, rgba(0, 255, 0, 0.8), rgba(0, 255, 0, 0) 70.71%),
+    linear-gradient(336deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 70.71%);
+}
+
+.test li {
+  border: 20px dashed pink;
+  list-style-type: none;
+  width: 150px;
+  background-color: lightblue;
+  transition: all 0.3s;
+}
+
+.test li:hover {
+  background-color: darkgreen;
+  font-size: 2em;
+  width: 300px;
+}

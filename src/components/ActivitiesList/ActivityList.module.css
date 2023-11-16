@@ -1,7 +1,17 @@
-.test li {
-  border: 2px solid black;
+.test {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
-.test li button:hover {
+.test li {
+  border: 2px solid black;
+  list-style-type: none;
+  width: 400px;
+  overflow: auto;
+}
+
+.test li:hover {
   background-color: darkgreen;
 }
