@@ -6,7 +6,7 @@ interface PropsType<T> {
   className?: string;
 }
 
-export default function ListView<T extends { id: number }>(
+export default function ItemList<T extends { id: number }>(
   props: PropsType<T>
 ) {
   return (

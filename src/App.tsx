@@ -1,6 +1,6 @@
 import Logo from "@assets/logo.png";
-import ActivityList from "@components/ActivitiesList/ActivityList";
-import { Activity } from "@components/ActivitiesList/Definition";
+import ActivityList from "@components/ActivityList/ActivityList";
+import { Activity } from "@components/ActivityList/Definition";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -68,7 +68,6 @@ export default function App() {
                   }"`}
                 </div>
                 <HelloWorld msg="Hello EE Practicum Team 2!" />
-                <ActivityList activities={builtInActivities} />
                 <DataContainer />
               </div>
             }
