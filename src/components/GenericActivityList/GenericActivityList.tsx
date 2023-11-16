@@ -1,11 +1,14 @@
-import ItemList from "../ItemList/ItemList";
-import { Activity } from "./Definition";
+import { Activity } from "@components/ActivitiesList/ActivitiesList";
+import ItemList from "@components/ItemList/ItemList";
+import { ReactElement } from "react";
 
-interface ActivityListProps {
+interface ActivitiesListProps {
   activities: Activity[];
 }
 
-export default function ActivityList(props: ActivityListProps) {
+export default function ActivitiesList(
+  props: ActivitiesListProps
+): ReactElement {
   return (
     <ItemList<Activity>
       items={props.activities}

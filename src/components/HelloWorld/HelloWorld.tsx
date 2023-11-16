@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ReactElement, useState } from "react";
 
 import styles from "./HelloWorld.module.css";
 
@@ -6,7 +6,7 @@ interface HelloWorldProps {
   msg: string;
 }
 
-export default function HelloWorld(props: HelloWorldProps) {
+export default function HelloWorld(props: HelloWorldProps): ReactElement {
   const [count, setCount] = useState(0);
 
   const increment = () => setCount((prevCount) => prevCount + 1);

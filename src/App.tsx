@@ -1,13 +1,14 @@
 import Logo from "@assets/logo.png";
-import ActivityList from "@components/ActivityList/ActivityList";
-import { Activity } from "@components/ActivityList/Definition";
+import ActivitiesList, {
+  Activity,
+} from "@components/ActivitiesList/ActivitiesList";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
 
-const builtInActivities: Activity[] = [
+const ACTIVITIES_MOCK: Activity[] = [
   {
     id: 1,
     name: "Kayaking",
@@ -24,7 +25,6 @@ const builtInActivities: Activity[] = [
     voteCount: 2,
     category: "indoor",
   },
-
   {
     id: 3,
     name: "Fondue",
@@ -33,7 +33,6 @@ const builtInActivities: Activity[] = [
     voteCount: 2,
     category: "indoor",
   },
-
   {
     id: 4,
     name: "Hiking",
@@ -41,7 +40,6 @@ const builtInActivities: Activity[] = [
     voteCount: 6,
     category: "outdoor",
   },
-
   {
     id: 5,
     name: "Salsa Class",
@@ -49,6 +47,41 @@ const builtInActivities: Activity[] = [
       "Learn a new dance and meet new people by attending a salsa class.",
     voteCount: 4,
     category: "indoor",
+  },
+  {
+    id: 6,
+    name: "Hiking",
+    description: "Enjoy a day in nature.",
+    voteCount: 0,
+    category: "Outdoor",
+  },
+  {
+    id: 7,
+    name: "Cooking Class",
+    description: "Learn to cook delicious dishes.",
+    voteCount: 0,
+    category: "Indoor",
+  },
+  {
+    id: 8,
+    name: "Movie Night",
+    description: "Watch a favorite movie together.",
+    voteCount: 0,
+    category: "Indoor",
+  },
+  {
+    id: 9,
+    name: "Beach Picnic",
+    description: "Relax by the seaside with a picnic.",
+    voteCount: 0,
+    category: "Outdoor",
+  },
+  {
+    id: 10,
+    name: "Board Games Night",
+    description: "Play fun board games with friends.",
+    voteCount: 0,
+    category: "Indoor",
   },
 ];
 
@@ -74,7 +107,7 @@ export default function App() {
           />
           <Route
             path="/activities"
-            element={<ActivityList activities={builtInActivities} />}
+            element={<ActivitiesList activities={ACTIVITIES_MOCK} />}
           />
         </Routes>
       </BrowserRouter>
