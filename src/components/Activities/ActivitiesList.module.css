@@ -10,12 +10,22 @@
 }
 
 .list__h1 {
-  color: red;
+  color: blue;
 }
 
 .list__card {
-  border: 2px solid red;
+  border: 2px solid blue;
   width: 400px;
   padding: 10px;
   margin: 10px;
+}
+
+.thumb_up {
+  background-color: limegreen;
+  padding: 5px;
+}
+
+.thumb_down {
+  background-color: lightcoral;
+  padding: 5px;
 }

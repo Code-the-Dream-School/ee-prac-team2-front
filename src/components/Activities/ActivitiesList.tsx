@@ -12,8 +12,6 @@ interface ActivitiesListProps {
 export default function ActivitiesList(props: ActivitiesListProps) {
   const [activitiesList, setActivitiesList] = useState(props);
 
-  console.log(activitiesList);
-
   return (
     <div className={styles.list__main}>
       <h1 className={styles.list__h1}>Your Activities</h1>
@@ -22,13 +20,27 @@ export default function ActivitiesList(props: ActivitiesListProps) {
           <h2>Activity: {item.name}</h2>
           <p>Description: {item.description}</p>
           <p>Category: {item.category}</p>
-          <p>Vote Count: {item.voteCount}</p>
-          <button>
-            <FontAwesomeIcon icon={faThumbsUp} />
-          </button>
-          <button>
-            <FontAwesomeIcon icon={faThumbsDown} />
-          </button>
+          <p>Place: {item.location}</p>
+          <p>When: {item.date}</p>
+          <p>
+            Time: {item.timeStart} - {item.timeEnd}
+          </p>
+
+          <p>
+            <span className={styles.thumb_up}>
+              {item.voteCountUp} &nbsp;
+              <button>
+                <FontAwesomeIcon icon={faThumbsUp} />
+              </button>
+            </span>
+            &nbsp; &nbsp;
+            <span className={styles.thumb_down}>
+              {item.voteCountDown} &nbsp;
+              <button>
+                <FontAwesomeIcon icon={faThumbsDown} />
+              </button>
+            </span>
+          </p>
         </div>
       ))}
     </div>
