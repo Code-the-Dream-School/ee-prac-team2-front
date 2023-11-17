@@ -7,7 +7,7 @@ interface ActivitiesListProps {
   list: Array<any>;
 }
 
-export default function Activities(props: ActivitiesListProps) {
+export default function ActivitiesList(props: ActivitiesListProps) {
   return (
     <div className={styles.list__main}>
       <h1 className={styles.list__h1}>Your Activities</h1>
@@ -17,6 +17,8 @@ export default function Activities(props: ActivitiesListProps) {
           <p>Description: {item.description}</p>
           <p>Category: {item.category}</p>
           <p>Vote Count: {item.voteCount}</p>
+          <button>Vote Yes</button>
+          <button>Vote No</button>
         </div>
       ))}
     </div>
