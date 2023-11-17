@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import styles from "./ActivitiesList.module.css";
 
 interface ActivitiesListProps {
@@ -17,8 +18,12 @@ export default function ActivitiesList(props: ActivitiesListProps) {
           <p>Description: {item.description}</p>
           <p>Category: {item.category}</p>
           <p>Vote Count: {item.voteCount}</p>
-          <button>Vote Yes</button>
-          <button>Vote No</button>
+          <button>
+            <FontAwesomeIcon icon={faThumbsUp} />
+          </button>
+          <button>
+            <FontAwesomeIcon icon={faThumbsDown} />
+          </button>
         </div>
       ))}
     </div>
