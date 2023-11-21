@@ -1,9 +1,9 @@
 import { getAllData } from "@utils";
-import React, { useEffect, useState } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 
 const URL = "http://localhost:8000/api/v1/";
 
-export default function DataContainer() {
+export default function DataContainer(): ReactElement {
   const [message, setMessage] = useState("");
 
   useEffect(() => {

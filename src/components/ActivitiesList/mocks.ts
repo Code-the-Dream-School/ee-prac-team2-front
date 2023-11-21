@@ -1,6 +1,6 @@
-import ActivitiesList from "./ActivitiesList";
+import { Activity } from "@components/ActivitiesList/ActivitiesList";
 
-const act_list = [
+export const ACTIVITIES_MOCK: Activity[] = [
   {
     id: 1,
     name: "Death on the Nile",
@@ -95,8 +95,78 @@ const act_list = [
     timeStart: "7:30 PM",
     timeEnd: "10:00 PM",
   },
-];
+  {
+    id: 8,
+    name: "Kayaking",
+    description: "Relax on a nice sunny day with a trip down the river.",
+    voteCount: 4,
+    category: "outdoor",
+  },
 
-export default function Activities() {
-  return <ActivitiesList list={act_list} />;
-}
+  {
+    id: 9,
+    name: "Movies",
+    description:
+      "If the weather is bad outside, enjoy a cozy movie in a movie theater.",
+    voteCount: 2,
+    category: "indoor",
+  },
+  {
+    id: 10,
+    name: "Fondue",
+    description:
+      "If you enjoy cooking, try making fondue as a romantic activity.",
+    voteCount: 2,
+    category: "indoor",
+  },
+  {
+    id: 11,
+    name: "Hiking",
+    description: "An outdoor activity your friends will enjoy.",
+    voteCount: 6,
+    category: "outdoor",
+  },
+  {
+    id: 12,
+    name: "Salsa Class",
+    description:
+      "Learn a new dance and meet new people by attending a salsa class.",
+    voteCount: 4,
+    category: "indoor",
+  },
+  {
+    id: 13,
+    name: "Hiking",
+    description: "Enjoy a day in nature.",
+    voteCount: 0,
+    category: "Outdoor",
+  },
+  {
+    id: 14,
+    name: "Cooking Class",
+    description: "Learn to cook delicious dishes.",
+    voteCount: 0,
+    category: "Indoor",
+  },
+  {
+    id: 15,
+    name: "Movie Night",
+    description: "Watch a favorite movie together.",
+    voteCount: 0,
+    category: "Indoor",
+  },
+  {
+    id: 16,
+    name: "Beach Picnic",
+    description: "Relax by the seaside with a picnic.",
+    voteCount: 0,
+    category: "Outdoor",
+  },
+  {
+    id: 17,
+    name: "Board Games Night",
+    description: "Play fun board games with friends.",
+    voteCount: 0,
+    category: "Indoor",
+  },
+];

@@ -1,12 +1,11 @@
 import Logo from "@assets/logo.png";
+import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
+import { ACTIVITIES_MOCK } from "@components/ActivitiesList/mocks";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
-
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-
-import Activities from "@components/Activities/Activities";
 
 export default function App() {
   return (
@@ -33,8 +32,10 @@ export default function App() {
             </main>
           }
         ></Route>
-
-        <Route path="/activities" element={<Activities />} />
+        <Route
+          path="/activities"
+          element={<ActivitiesList activities={ACTIVITIES_MOCK} />}
+        />
       </Routes>
     </BrowserRouter>
   );
