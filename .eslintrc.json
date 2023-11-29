@@ -47,7 +47,7 @@
   "parserOptions": {
     "project": "./tsconfig.eslint.json", // Specify where to find the root tsconfig file of your project.
     "ecmaVersion": 2021, // ECMAScript version supported in the project.
-    "sourceType": "module", // set to `module` because we ue ECMAScript modules.
+    "sourceType": "module", // set to `module` because we use ECMAScript modules.
     "ecmaFeatures": {
       "jsx": true // enable jsx for React.
     }
