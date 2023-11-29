@@ -1,6 +1,5 @@
 import Logo from "@assets/logo.png";
-import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
-import { ACTIVITIES_MOCK } from "@components/ActivitiesList/mocks";
+import ActivitiesList from "@components/ActivitiesList/ActivitiesDataFetch";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -27,10 +26,7 @@ export default function App() {
               </div>
             }
           />
-          <Route
-            path="/activities"
-            element={<ActivitiesList activities={ACTIVITIES_MOCK} />}
-          />
+          <Route path="/activities" Component={ActivitiesList} />{" "}
         </Routes>
       </BrowserRouter>
     </main>
