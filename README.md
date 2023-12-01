@@ -4,6 +4,7 @@
 - **Mohammad** ([@msrezaie](https://github.com/msrezaie)), A MERN stack aficionado
 - **Victoria** ([@Victoria240](https://github.com/Victoria240)), I'm a foodie 😋
 - **Annie** ([@anniethewebcoder](https://github.com/anniethewebcoder)) is studying React and Ruby on Rails at Code the Dream.
+- **Marice** ([@marice-romero] (https://github.com/marice-romero)), React and Node/Express student by day, amateur baker and wannabe pâtissière
 
 # Front-End Repo for Node/React Practicum
 
