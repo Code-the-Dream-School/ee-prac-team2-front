@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Logo from "@assets/logo.png";
+import AccountCreation from "@components/AccountCreation.tsx/AccountCreation";
 import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
 import { ACTIVITIES_MOCK } from "@components/ActivitiesList/mocks";
+import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
-import AccountCreation from "@components/AccountCreation/AccountCreation";
-import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
 
@@ -55,7 +55,7 @@ export default function App() {
             path="/account"
             element={
               isAuthenticated ? (
-                <AuthenticatedContent username={""} email={""} password={""} />
+                <AuthenticatedContent username={""} email={""} />
               ) : (
                 <p>Not authenticated</p>
               )

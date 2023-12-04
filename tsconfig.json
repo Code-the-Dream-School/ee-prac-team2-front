@@ -21,7 +21,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils": ["src/utils"]
     }
   },
   "include": ["src", "jest.setup.ts", "vite.config.ts", "cypress.config.ts"]

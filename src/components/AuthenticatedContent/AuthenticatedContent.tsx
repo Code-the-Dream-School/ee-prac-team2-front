@@ -4,14 +4,13 @@ import React from "react";
 interface AuthenticatedContentProps {
   username: string;
   email: string;
-  password: string;
+  
 }
 
 // Use the defined type for the props
 const AuthenticatedContent: React.FC<AuthenticatedContentProps> = ({
   username,
   email,
-  password,
 }) => {
   return (
     <div>
