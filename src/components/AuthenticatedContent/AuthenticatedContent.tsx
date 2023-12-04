@@ -4,7 +4,6 @@ import React from "react";
 interface AuthenticatedContentProps {
   username: string;
   email: string;
-  
 }
 
 // Use the defined type for the props

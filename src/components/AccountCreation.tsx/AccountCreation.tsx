@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // @ts-ignore
 
 const AccountCreation = ({ onAccountCreate }) => {
-  const [name, setName] = useState(""); 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -49,7 +49,7 @@ const AccountCreation = ({ onAccountCreate }) => {
       <div>
         <h2>Create Account</h2>
         <label>
-          Name: 
+          Name:
           <input
             type="text"
             value={name}
