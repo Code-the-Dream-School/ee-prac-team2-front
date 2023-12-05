@@ -1,7 +1,7 @@
 import Logo from "@assets/logo.png";
-import ActivitiesList from "@components/ActivitiesList/ActivitiesDataFetch";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
+import ActivitiesList from "@containers/ActivitiesContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
