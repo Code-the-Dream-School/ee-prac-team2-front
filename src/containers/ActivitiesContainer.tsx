@@ -1,8 +1,7 @@
 import { Activity } from "@components/ActivitiesList/ActivitiesList";
+import styles from "@components/ActivitiesList/ActivitiesList.module.css";
 import axios from "axios";
 import React, { ReactElement, useEffect, useState } from "react";
-
-import styles from "../components/ActivitiesList/ActivitiesList.module.css";
 
 const URL = "http://localhost:8000/api/v1/activities";
 

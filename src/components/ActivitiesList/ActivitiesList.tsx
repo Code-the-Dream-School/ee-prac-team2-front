@@ -1,12 +1,29 @@
+import styles from "@components/ActivitiesList/ActivitiesList.module.css";
 import React, { ReactElement } from "react";
 
-import styles from "./ActivitiesList.module.css";
+export interface Voter {
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export interface Vote {
+  _id: string;
+  activityID: string;
+  voters: Voter[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 export interface Activity {
-  id: number;
+  _id: number;
   name: string;
   description: string;
-  voteCount: number;
+  vote: Vote;
   category: string;
 }
 
@@ -19,19 +36,19 @@ export default function Activities(props: ActivitiesListProps): ReactElement {
     <div className={styles.list__main}>
       <h1 className={styles.list__h1}>Your Activities</h1>
       <ul>
-        {props.activities.map((activity) => (
-          <li key={activity.id} className={styles.list__card}>
+        {props.activities.map(({ _id, name, description, category, vote }) => (
+          <li key={_id} className={styles.activityItem}>
             <h2>
-              <strong>Activity:</strong>: {activity.name}
+              <strong>Activity:</strong>: {name}
             </h2>
             <p>
-              <strong>Description:</strong>: {activity.description}
+              <strong>Description:</strong>: {description}
             </p>
             <p>
-              <strong>Category:</strong>: {activity.category}
+              <strong>Category:</strong>: {category}
             </p>
             <p>
-              <strong>Vote Count:</strong>: {activity.voteCount}
+              <strong>Votes:</strong>: {vote.voters?.length ?? 0}
             </p>
           </li>
         ))}
