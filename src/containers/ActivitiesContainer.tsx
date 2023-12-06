@@ -40,7 +40,7 @@ const ActivitiesList: React.FC = (): ReactElement => {
             <p>Activity Name: {activity.name}</p>
             <p>Description: {activity.description}</p>
             <p>Category: {activity.category}</p>
-            <p>Vote Count: {activity.votes}</p>
+            <p>Vote Count: {activity.vote.voters?.length ?? 0}</p>
           </div>
         ))}
       </div>
