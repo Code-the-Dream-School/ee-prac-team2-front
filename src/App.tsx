@@ -1,7 +1,7 @@
 import Logo from "@assets/logo.png";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
-import ActivitiesList from "@containers/ActivitiesContainer";
+import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
@@ -26,7 +26,7 @@ export default function App() {
               </div>
             }
           />
-          <Route path="/activities" Component={ActivitiesList} />{" "}
+          <Route path="/activities" Component={ActivitiesListContainer} />{" "}
         </Routes>
       </BrowserRouter>
     </main>
