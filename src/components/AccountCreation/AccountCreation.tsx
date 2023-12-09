@@ -1,44 +1,18 @@
-import React, { useState } from "react";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-nocheck
 
-const AccountCreation = ({ onAccountCreate }) => {
+import React, { useState } from "react";
+
+const AccountCreation = ({ onCreateAccount }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const handleCreateAccount = async (e) => {
+
+  const handleCreateAccount = (e) => {
     e.preventDefault();
 
     if (name.trim() && email.trim() && password.trim()) {
-      onAccountCreate(name, email, password);
-
-      try {
-        const response = await fetch(
-          "https://dn-live-test.onrender.com/api/v1/auth/signup",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              name,
-              email,
-              password,
-            }),
-          }
-        );
-
-        if (response.ok) {
-          const responseData = await response.json();
-          console.log("Account created successfully:", responseData);
-        } else {
-          console.error("Account creation failed.");
-        }
-      } catch (error) {
-        console.error("Error during account creation:", error);
-      }
+      onCreateAccount(name, email, password);
     } else {
       alert("Please enter a valid name, email, and password.");
     }
@@ -51,32 +25,36 @@ const AccountCreation = ({ onAccountCreate }) => {
         <label>
           Name:
           <input
+            required
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </label>
-        <br />
+        <div />
 
         <label>
           Email:
           <input
+            required
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </label>
-        <br />
+        <div />
 
         <label>
           Password:
           <input
+            required
             type="password"
             value={password}
+            minLength={8}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
-        <br />
+        <div />
 
         <button type="submit">Create Account</button>
       </div>

@@ -1,29 +1,16 @@
 import Logo from "@assets/logo.png";
-import AccountCreation from "@components/AccountCreation.tsx/AccountCreation";
+import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
 import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
 import { ACTIVITIES_MOCK } from "@components/ActivitiesList/mocks";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
 
-export default function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleAccountCreate = (
-    username: string,
-    email: string,
-    password: string
-  ) => {
-    console.log(
-      `Account created: Username - ${username}, Email - ${email}, Password - ${password}`
-    );
-    setIsAuthenticated(true);
-  };
-
+const App = () => {
   return (
     <main className={styles.main}>
       <img className={styles.logo} alt="React logo" width="400px" src={Logo} />
@@ -33,11 +20,9 @@ export default function App() {
             path="/"
             element={
               <div>
-                <div>
-                  {`VITE_SOME_ENVIRONMENT_VARIABLE from .env.local: "${
-                    import.meta.env.VITE_SOME_ENVIRONMENT_VARIABLE
-                  }"`}
-                </div>
+                <div>{`VITE_SOME_ENVIRONMENT_VARIABLE from .env.local: "${
+                  import.meta.env.VITE_SOME_ENVIRONMENT_VARIABLE
+                }"`}</div>
                 <HelloWorld msg="Hello EE Practicum Team 2!" />
                 <DataContainer />
               </div>
@@ -47,22 +32,15 @@ export default function App() {
             path="/activities"
             element={<ActivitiesList activities={ACTIVITIES_MOCK} />}
           />
-          <Route
-            path="/signup"
-            element={<AccountCreation onAccountCreate={handleAccountCreate} />}
-          />
+          <Route path="/signup" element={<AccountCreationContainer />} />
           <Route
             path="/account"
-            element={
-              isAuthenticated ? (
-                <AuthenticatedContent username={""} email={""} />
-              ) : (
-                <p>Not authenticated</p>
-              )
-            }
+            element={<AuthenticatedContent username={""} email={""} />}
           />
         </Routes>
       </BrowserRouter>
     </main>
   );
-}
+};
+
+export default App;
