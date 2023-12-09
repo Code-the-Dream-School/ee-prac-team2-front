@@ -1,22 +1,18 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import React from "react";
 
-// Define the type for the props
-interface AuthenticatedContentProps {
-  username: string;
-  email: string;
-}
-
-// Use the defined type for the props
-const AuthenticatedContent: React.FC<AuthenticatedContentProps> = ({
-  username,
-  email,
-}) => {
+const AuthenticatedContent = ({ name, email }) => {
+  console.log("Received props:", { name, email });
   return (
     <div>
-      <h2>Welcome, {username}!</h2>
+      <h2>Welcome to Your Dashboard, {name} </h2>
       <p>Email: {email}</p>
-      <p>This is your personalized content for authenticated users.</p>
-      {/* Add additional content or functionality for authenticated users */}
+      <p>You currently do not belong to any group.</p>
+      <button onClick={() => (window.location.href = "/create-group")}>
+        Create Group
+      </button>
     </div>
   );
 };

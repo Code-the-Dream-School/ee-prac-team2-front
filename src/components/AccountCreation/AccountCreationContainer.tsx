@@ -8,6 +8,9 @@ import AccountCreation from "./AccountCreation";
 
 const AccountCreationContainer = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleAccountCreate = async (name, email, password) => {
     // Simulate API call success
@@ -46,9 +49,17 @@ const AccountCreationContainer = () => {
   return (
     <div>
       {isAuthenticated ? (
-        <AuthenticatedContent username={""} email={""} />
+        <AuthenticatedContent name={name} email={email} />
       ) : (
-        <AccountCreation onCreateAccount={handleAccountCreate} />
+        <AccountCreation
+          name={name}
+          email={email}
+          password={password}
+          setName={setName}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          onCreateAccount={handleAccountCreate}
+        />
       )}
     </div>
   );
