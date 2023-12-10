@@ -12,6 +12,12 @@ export async function getData(url: string, params?: AxiosRequestConfig) {
 }
 
 export async function getAllData(url: string) {
+  if (!url) {
+    return {
+      data: "`url` is `undefined`! Please make sure your `.env` file includes `VITE_BACKEND_URL`",
+    };
+  }
+
   try {
     const res = await axios.get(url);
     const data = await res.data;
