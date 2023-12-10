@@ -36,7 +36,7 @@ const App = () => {
           <Route path="/signup" element={<AccountCreationContainer />} />
           <Route
             path="/account"
-            element={<AuthenticatedContent username={""} email={""} />}
+            element={<AuthenticatedContent name={""} email={""} />}
           />
           <Route path="/create-group" element={<GroupCreationContainer />} />
         </Routes>

@@ -1,13 +1,18 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import React, { useState } from "react";
+// AccountCreation.tsx
+import React from "react";
 
-const AccountCreation = ({ onCreateAccount }) => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+const AccountCreation = ({
+  onCreateAccount,
+  name,
+  email,
+  password,
+  setName,
+  setEmail,
+  setPassword,
+}) => {
   const handleCreateAccount = (e) => {
     e.preventDefault();
 
