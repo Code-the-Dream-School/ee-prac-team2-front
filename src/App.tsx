@@ -4,6 +4,7 @@ import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
 import { ACTIVITIES_MOCK } from "@components/ActivitiesList/mocks";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
+import GroupCreationContainer from "@components/Group/GroupCreationContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -37,6 +38,7 @@ const App = () => {
             path="/account"
             element={<AuthenticatedContent username={""} email={""} />}
           />
+          <Route path="/create-group" element={<GroupCreationContainer />} />
         </Routes>
       </BrowserRouter>
     </main>
