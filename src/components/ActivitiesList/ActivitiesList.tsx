@@ -1,16 +1,13 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { LocalActivity } from "@mui/icons-material";
 import {
   Container,
   List,
   ListItem,
-  ListItemText,
   ListItemIcon,
-  Typography,
+  ListItemText
 } from "@mui/material";
+import { ReactElement } from "react";
 
-import { LocalActivity, CircleOutlined } from "@mui/icons-material";
-
-import styles from "./ActivitiesList.module.css";
 
 export interface Activity {
   id: number;
