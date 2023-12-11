@@ -21,11 +21,11 @@
   },
   "lint-staged": {
     "*.{css,md,json}": [
-      "prettier --write"
+      "npm run format"
     ],
     "*.ts?(x)": [
-      "eslint",
-      "prettier --write"
+      "npm run lint",
+      "npm run format"
     ],
     "package.json": "npx sort-package-json"
   },
