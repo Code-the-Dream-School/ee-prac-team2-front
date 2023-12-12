@@ -10,6 +10,7 @@ export default defineConfig({
     alias: {
       "@assets": path.resolve(__dirname, "./src/assets"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@containers": path.resolve(__dirname, "./src/containers"),
       "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
@@ -17,7 +18,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8080",
+        target: "http://localhost:8000",
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ""),
       },
