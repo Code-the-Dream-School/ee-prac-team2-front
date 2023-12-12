@@ -12,6 +12,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
 
   useEffect(() => {
     const fetchUsers = async () => {
+      // Fetch users from the API and update the state
       try {
         const response = await fetch(
           "https://dn-live-test.onrender.com/api/v1/users"
@@ -34,6 +35,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
   }, []);
 
   const handleCheckboxChange = (userId) => {
+    // Update the selected users when a checkbox is changed
     const updatedUsers = selectedUsers.includes(userId)
       ? selectedUsers.filter((id) => id !== userId)
       : [...selectedUsers, userId];
@@ -45,6 +47,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     e.preventDefault();
 
     try {
+      // Make a request to create a new group with the form data
       const response = await fetch(
         "https://dn-live-test.onrender.com/api/v1/groups",
         {
@@ -63,10 +66,10 @@ const CreateGroupForm = ({ onCreateGroup }) => {
 
       if (response.ok) {
         const { newGroupId } = await response.json();
-        // Handle success, maybe redirect to the new group page
+        // Call the parent component's callback with the new group ID
+        onCreateGroup(newGroupId);
         console.log("Group created successfully:", newGroupId);
       } else {
-        // Handle error
         console.error("Group creation failed.");
       }
     } catch (error) {
@@ -107,7 +110,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
       </label>
       <div />
       <div>
-        <h4>Select Members:</h4>
+        <h4>Select Group Owners:</h4>
         {loadingUsers ? (
           <p>Loading users...</p>
         ) : (

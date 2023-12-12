@@ -1,7 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 // GroupCreationContainer.jsx
-// GroupCreationContainer.jsx
 
 import React, { useState } from "react";
 
