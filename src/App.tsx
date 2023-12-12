@@ -1,11 +1,10 @@
 import Logo from "@assets/logo.png";
 import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
-import ActivitiesList from "@components/ActivitiesList/ActivitiesList";
-import { ACTIVITIES_MOCK } from "@components/ActivitiesList/mocks";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
 import GroupCreationContainer from "@components/Group/GroupCreationContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
+import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -29,10 +28,7 @@ const App = () => {
               </div>
             }
           />
-          <Route
-            path="/activities"
-            element={<ActivitiesList activities={ACTIVITIES_MOCK} />}
-          />
+          <Route path="/activities" Component={ActivitiesListContainer} />{" "}
           <Route path="/signup" element={<AccountCreationContainer />} />
           <Route
             path="/account"
