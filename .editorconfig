@@ -1,6 +1,14 @@
 # Editor configuration, see https://editorconfig.org
+
+# this is the topmost editorconfig file in the repo
 root = true
 
+# all files
 [*]
 charset = utf-8
+# force unix-style line endings, even on windows
 end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = true
