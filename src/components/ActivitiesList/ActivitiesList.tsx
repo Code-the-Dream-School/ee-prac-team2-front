@@ -4,16 +4,33 @@ import {
   List,
   ListItem,
   ListItemIcon,
-  ListItemText
+  ListItemText,
 } from "@mui/material";
 import { ReactElement } from "react";
 
+export interface Voter {
+  _id: string;
+  name: string;
+  email: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
+
+export interface Vote {
+  _id: string;
+  activityID: string;
+  voters: Voter[];
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}
 
 export interface Activity {
-  id: number;
+  _id: number;
   name: string;
   description: string;
-  voteCount: number;
+  vote: Vote;
   category: string;
 }
 
@@ -30,46 +47,48 @@ export default function Activities(props: ActivitiesListProps): ReactElement {
             width: "100%",
           }}
         >
-          {props.activities.map((activity) => (
-            <ListItem
-              key={activity.id}
-              alignItems="center"
-              divider={true}
-              sx={{
-                margin: 2,
-              }}
-            >
-              <ListItemIcon>
-                <LocalActivity fontSize="large" />
-              </ListItemIcon>
-
-              <ListItemText
-                primary={activity.name}
-                secondary={
-                  <>
-                    <p>{activity.category}</p>
-                    <p>{activity.description}</p>
-                  </>
-                }
+          {props.activities.map(
+            ({ _id, name, description, category, vote }) => (
+              <ListItem
+                key={_id}
+                alignItems="center"
+                divider={true}
                 sx={{
-                  margin: 1,
-                }}
-              />
-              <ListItemIcon
-                sx={{
-                  borderStyle: "solid",
-                  borderWidth: 1,
-                  borderRadius: 50,
-                  paddingTop: 1,
-                  paddingBottom: 1,
-                  marginLeft: 1,
-                  justifyContent: "center",
+                  margin: 2,
                 }}
               >
-                {activity.voteCount}
-              </ListItemIcon>
-            </ListItem>
-          ))}
+                <ListItemIcon>
+                  <LocalActivity fontSize="large" />
+                </ListItemIcon>
+
+                <ListItemText
+                  primary={name}
+                  secondary={
+                    <>
+                      <p>{category}</p>
+                      <p>{description}</p>
+                    </>
+                  }
+                  sx={{
+                    margin: 1,
+                  }}
+                />
+                <ListItemIcon
+                  sx={{
+                    borderStyle: "solid",
+                    borderWidth: 1,
+                    borderRadius: 50,
+                    paddingTop: 1,
+                    paddingBottom: 1,
+                    marginLeft: 1,
+                    justifyContent: "center",
+                  }}
+                >
+                  {vote.voters?.length ?? 0}
+                </ListItemIcon>
+              </ListItem>
+            )
+          )}
         </List>
       </Container>
     </>
