@@ -13,12 +13,6 @@ const AccountCreationContainer = () => {
   const [password, setPassword] = useState("");
 
   const handleAccountCreate = async (name, email, password) => {
-    // Simulate API call success
-    setIsAuthenticated(true);
-    console.log(
-      `Account created: Name - ${name}, Email - ${email}, Password - ${password}`
-    );
-
     try {
       const response = await fetch(
         "https://dn-live-test.onrender.com/api/v1/auth/signup",
@@ -38,6 +32,11 @@ const AccountCreationContainer = () => {
       if (response.ok) {
         const responseData = await response.json();
         console.log("Account created successfully:", responseData);
+
+        setIsAuthenticated(true);
+        console.log(
+          `Account created: Name - ${name}, Email - ${email}, Password - ${password}`
+        );
       } else {
         console.error("Account creation failed.");
       }
