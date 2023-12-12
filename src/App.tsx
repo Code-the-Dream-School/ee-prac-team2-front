@@ -1,4 +1,5 @@
 import Logo from "@assets/logo.png";
+import AddEventToGroupForm from "@components/AddEventToGroupForm/AddEventToGroupForm";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
@@ -30,8 +31,9 @@ export default function App() {
               <Link to="/activities">Link to Activities</Link>
             </main>
           }
-        ></Route>
+        />
         <Route path="/activities" Component={ActivitiesListContainer} />
+        <Route path="/events" Component={AddEventToGroupForm} />
       </Routes>
     </BrowserRouter>
   );
