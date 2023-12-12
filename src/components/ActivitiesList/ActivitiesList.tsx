@@ -65,8 +65,8 @@ export default function Activities(props: ActivitiesListProps): ReactElement {
                   primary={name}
                   secondary={
                     <>
-                      <p>{category}</p>
-                      <p>{description}</p>
+                      <span>{category}</span>
+                      <span>{description}</span>
                     </>
                   }
                   sx={{
