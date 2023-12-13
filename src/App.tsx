@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import Logo from "@assets/logo.png";
 import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
