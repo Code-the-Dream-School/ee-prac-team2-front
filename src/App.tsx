@@ -3,6 +3,7 @@ import AccountCreationContainer from "@components/AccountCreation/AccountCreatio
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
+import HomePage from "@components/HomePage/HomePage";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
@@ -12,7 +13,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route
+        {/* <Route
           path="/"
           element={
             <main className={styles.main}>
@@ -32,7 +33,8 @@ const App = () => {
               <Link to="/activities">Link to Activities</Link>
             </main>
           }
-        ></Route>
+        ></Route> */}
+        <Route path="/" element={<HomePage />} />
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/signup" element={<AccountCreationContainer />} />
         <Route
