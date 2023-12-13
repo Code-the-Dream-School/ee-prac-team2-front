@@ -27,40 +27,40 @@ const AccountCreation = ({
     <form onSubmit={handleCreateAccount}>
       <div>
         <h2>Create Account</h2>
-        <label>
-          Name:
-          <input
-            required
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </label>
-        <div />
-
-        <label>
-          Email:
-          <input
-            required
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <div />
-
-        <label>
-          Password:
-          <input
-            required
-            type="password"
-            value={password}
-            minLength={8}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <div />
-
+        <div>
+          <label>
+            Name:
+            <input
+              required
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Email:
+            <input
+              required
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </label>
+        </div>
+        <div>
+          <label>
+            Password:
+            <input
+              required
+              type="password"
+              value={password}
+              minLength={8}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </label>
+        </div>
         <button type="submit">Create Account</button>
       </div>
     </form>
