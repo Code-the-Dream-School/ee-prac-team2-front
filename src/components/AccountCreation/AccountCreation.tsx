@@ -2,7 +2,18 @@
 // @ts-nocheck
 
 // AccountCreation.tsx
-import React from "react";
+
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+
+import theme from "./../HomePage/theme";
 
 const AccountCreation = ({
   onCreateAccount,
@@ -24,46 +35,55 @@ const AccountCreation = ({
   };
 
   return (
-    <form onSubmit={handleCreateAccount}>
-      <div>
-        <h2>Create Account</h2>
-        <div>
-          <label>
-            Name:
-            <input
-              required
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email:
-            <input
-              required
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password:
-            <input
-              required
-              type="password"
-              value={password}
-              minLength={8}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit">Create Account</button>
-      </div>
-    </form>
+    <Container>
+      <ThemeProvider theme={theme}>
+        <Box
+          component="form"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+          onSubmit={handleCreateAccount}
+        >
+          <div>
+            <Typography component="h3" variant="h3" fontFamily="Pacifico">
+              Create Account
+            </Typography>
+            <div>
+              <TextField
+                required
+                id="name-field"
+                label="Name"
+                defaultValue={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <TextField
+                required
+                id="email-field"
+                label="Email"
+                defaultValue={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <TextField
+                required
+                id="password-field"
+                label="Password"
+                minLength={8}
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button variant="contained" type="submit" align="right">
+              Sign Up
+            </Button>
+          </div>
+        </Box>
+      </ThemeProvider>
+    </Container>
   );
 };
 
