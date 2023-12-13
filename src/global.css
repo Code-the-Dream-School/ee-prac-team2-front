@@ -25,6 +25,7 @@ html {
 html,
 body {
   height: 100%;
+  background-image: url("./components/HomePage/paper.png");
 }
 
 body {

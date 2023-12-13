@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 
-import outdoorPic from "./outdoor.png";
+import outdoorPic from "./media/outdoor.png";
 
 export default function HomePicture() {
   return (
@@ -20,7 +20,7 @@ export default function HomePicture() {
         component="h2"
         fontFamily="Just Another Hand"
         align="center"
-        sx={{ mt: 4, mb: 8 }}
+        sx={{ mt: 4, mb: 4 }}
       >
         With the help of suggested ideas.
       </Typography>

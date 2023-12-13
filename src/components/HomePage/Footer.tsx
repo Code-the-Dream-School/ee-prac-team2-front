@@ -13,33 +13,21 @@ import { Link } from "react-router-dom";
 import logoIcon from "./media/logo.png";
 import theme from "./theme";
 
-export default function NavBar() {
+export default function Footer() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="warning">
+        <AppBar position="static" color="primary">
           <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="logo"
-              sx={{ mr: 2 }}
-            >
-              <Avatar src={logoIcon} />
-            </IconButton>
             <Typography
               variant="h6"
               fontFamily="Pacifico"
               component="div"
               sx={{ flexGrow: 1 }}
+              align="center"
             >
-              Groupals
+              &copy; Groupals - Code the Dream Practicum 2023
             </Typography>
-            <Button color="inherit">About</Button>
-            <Button color="inherit">
-              <Link to="/signup">Login / Signup</Link>
-            </Button>
           </Toolbar>
         </AppBar>
       </Box>
