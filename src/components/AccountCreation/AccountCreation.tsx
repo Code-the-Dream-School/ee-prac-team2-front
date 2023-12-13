@@ -35,25 +35,31 @@ const AccountCreation = ({
   };
 
   return (
-    <Container>
-      <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
+      <Container>
         <Box
-          component="form"
           display="flex"
           justifyContent="center"
           alignItems="center"
           minHeight="100vh"
-          onSubmit={handleCreateAccount}
         >
-          <div>
-            <Typography component="h3" variant="h3" fontFamily="Pacifico">
+          <form onSubmit={handleCreateAccount}>
+            <Typography
+              gutterBottom
+              component="h3"
+              variant="h3"
+              fontFamily="Pacifico"
+            >
               Create Account
             </Typography>
             <div>
               <TextField
                 required
+                fullWidth
                 id="name-field"
+                type="text"
                 label="Name"
+                margin="normal"
                 defaultValue={name}
                 onChange={(e) => setName(e.target.value)}
               />
@@ -61,8 +67,11 @@ const AccountCreation = ({
             <div>
               <TextField
                 required
+                fullWidth
                 id="email-field"
                 label="Email"
+                type="email"
+                margin="normal"
                 defaultValue={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -70,20 +79,22 @@ const AccountCreation = ({
             <div>
               <TextField
                 required
+                fullWidth
                 id="password-field"
                 label="Password"
                 minLength={8}
                 type="password"
+                margin="normal"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <Button variant="contained" type="submit" align="right">
+            <Button type="submit" variant="contained" sx={{ mt: 4 }}>
               Sign Up
             </Button>
-          </div>
+          </form>
         </Box>
-      </ThemeProvider>
-    </Container>
+      </Container>
+    </ThemeProvider>
   );
 };
 
