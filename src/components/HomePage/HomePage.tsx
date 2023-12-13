@@ -3,6 +3,7 @@ import { Container } from "@mui/material";
 import Footer from "./Footer";
 import HomePicture from "./HomePicture";
 import NavBar from "./NavBar";
+import SubPage from "./SubPage";
 import SubPictures from "./SubPictures";
 
 export default function HomePage() {
@@ -12,6 +13,7 @@ export default function HomePage() {
       <Container>
         <HomePicture />
         <SubPictures />
+        <SubPage />
       </Container>
       <Footer />
     </>

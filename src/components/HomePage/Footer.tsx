@@ -1,16 +1,6 @@
-import {
-  AppBar,
-  Avatar,
-  Box,
-  Button,
-  IconButton,
-  ThemeProvider,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import { Link } from "react-router-dom";
+import CopyrightIcon from "@mui/icons-material/Copyright";
+import { AppBar, Box, ThemeProvider, Toolbar, Typography } from "@mui/material";
 
-import logoIcon from "./media/logo.png";
 import theme from "./theme";
 
 export default function Footer() {
@@ -26,7 +16,7 @@ export default function Footer() {
               sx={{ flexGrow: 1 }}
               align="center"
             >
-              &copy; Groupals - Code the Dream Practicum 2023
+              <CopyrightIcon /> Groupals - Code the Dream Practicum 2023
             </Typography>
           </Toolbar>
         </AppBar>
