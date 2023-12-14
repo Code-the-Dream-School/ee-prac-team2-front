@@ -18,7 +18,7 @@
     "simple-import-sort" // Plugin for sorting imports in file.
   ],
   "rules": {
-    "prettier/prettier": "off",
+    "prettier/prettier": "off", // don't highlight violations here, Prettier will fix them
     "import/first": "warn",
     "import/newline-after-import": "warn",
     "import/no-duplicates": "error",

@@ -1,5 +1,12 @@
-import styles from "@components/ActivitiesList/ActivitiesList.module.css";
-import React, { ReactElement } from "react";
+import { LocalActivity } from "@mui/icons-material";
+import {
+  Container,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { ReactElement } from "react";
 
 export interface Voter {
   _id: string;
@@ -33,26 +40,57 @@ interface ActivitiesListProps {
 
 export default function Activities(props: ActivitiesListProps): ReactElement {
   return (
-    <div className={styles.list__main}>
-      <h1 className={styles.list__h1}>Your Activities</h1>
-      <ul>
-        {props.activities.map(({ _id, name, description, category, vote }) => (
-          <li key={_id} className={styles.activityItem}>
-            <h2>
-              <strong>Activity:</strong>: {name}
-            </h2>
-            <p>
-              <strong>Description:</strong>: {description}
-            </p>
-            <p>
-              <strong>Category:</strong>: {category}
-            </p>
-            <p>
-              <strong>Votes:</strong>: {vote.voters?.length ?? 0}
-            </p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <Container maxWidth="sm">
+        <List
+          sx={{
+            width: "100%",
+          }}
+        >
+          {props.activities.map(
+            ({ _id, name, description, category, vote }) => (
+              <ListItem
+                key={_id}
+                alignItems="center"
+                divider={true}
+                sx={{
+                  margin: 2,
+                }}
+              >
+                <ListItemIcon>
+                  <LocalActivity fontSize="large" />
+                </ListItemIcon>
+
+                <ListItemText
+                  primary={name}
+                  secondary={
+                    <>
+                      <span>{category}</span>
+                      <span>{description}</span>
+                    </>
+                  }
+                  sx={{
+                    margin: 1,
+                  }}
+                />
+                <ListItemIcon
+                  sx={{
+                    borderStyle: "solid",
+                    borderWidth: 1,
+                    borderRadius: 50,
+                    paddingTop: 1,
+                    paddingBottom: 1,
+                    marginLeft: 1,
+                    justifyContent: "center",
+                  }}
+                >
+                  {vote.voters?.length ?? 0}
+                </ListItemIcon>
+              </ListItem>
+            )
+          )}
+        </List>
+      </Container>
+    </>
   );
 }
