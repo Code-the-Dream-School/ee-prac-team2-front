@@ -1,4 +1,5 @@
 import Logo from "@assets/logo.png";
+import AboutPage from "@components/AboutPage/AboutPage";
 import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/signup" element={<AccountCreationContainer />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route
           path="/account"
           element={<AuthenticatedContent name={""} email={""} />}
