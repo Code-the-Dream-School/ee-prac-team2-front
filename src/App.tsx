@@ -17,7 +17,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route
+        <Route
           path="/"
           element={
             <main className={styles.main}>
@@ -37,7 +37,7 @@ const App = () => {
               <Link to="/activities">Link to Activities</Link>
             </main>
           }
-        ></Route> */}
+        ></Route>
         <Route path="/" element={<HomePage />} />
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/signup" element={<AccountCreationContainer />} />
@@ -45,6 +45,9 @@ const App = () => {
           path="/account"
           element={<AuthenticatedContent name={""} email={""} />}
         />
+
+        {/* New route for group creation */}
+        <Route path="/create-group" element={<GroupCreationContainer />} />
       </Routes>
     </BrowserRouter>
   );
