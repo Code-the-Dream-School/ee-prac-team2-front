@@ -9,6 +9,8 @@ import DataContainer from "@components/DataContainer/DataContainer";
 import GroupCreationContainer from "@components/Group/GroupCreationContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
 import HomePage from "@components/HomePage/HomePage";
+import ViewSingleEventContainer from "@components/ViewSingleEvent/ViewSingleEventContainer";
+import ViewSingleGroup from "@components/ViewSingleGroup/ViewSingleGroup";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
@@ -22,12 +24,11 @@ const App = () => {
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/events" Component={AddEventToGroupForm} />
         <Route path="/signup" element={<AccountCreationContainer />} />
-        <Route
-          path="/account"
-          element={<AuthenticatedContent name={""} email={""} />}
-        />
         {/* New route for group creation */}
         <Route path="/create-group" element={<GroupCreationContainer />} />
+        <Route path="/account" element={<AuthenticatedContent />} />
+        <Route path="/groups/:id" element={<ViewSingleGroup />} />
+        <Route path="/events/:id" element={<ViewSingleEventContainer />} />
       </Routes>
     </BrowserRouter>
   );
