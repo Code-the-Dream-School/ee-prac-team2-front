@@ -46,7 +46,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Dummy data for API call (replace with actual API call)
+    //API call
     const groupData = {
       groupName,
       description,
@@ -102,7 +102,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
       </label>
       <div />
       <div>
-        <h4>Select Group Owners:</h4>
+        <h4>Select Group Members:</h4>
         {loadingUsers ? (
           <p>Loading users...</p>
         ) : (
