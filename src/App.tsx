@@ -2,12 +2,15 @@
 // @ts-nocheck
 
 import Logo from "@assets/logo.png";
+import AboutPage from "@components/AboutPage/AboutPage";
 import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
 import GroupCreationContainer from "@components/Group/GroupCreationContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
+import Footer from "@components/HomePage/Footer";
 import HomePage from "@components/HomePage/HomePage";
+import NavBar from "@components/HomePage/NavBar";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
@@ -16,6 +19,7 @@ import styles from "./App.module.css";
 const App = () => {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         <Route
           path="/"
@@ -41,6 +45,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/signup" element={<AccountCreationContainer />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route
           path="/account"
           element={<AuthenticatedContent name={""} email={""} />}
@@ -49,6 +54,7 @@ const App = () => {
         {/* New route for group creation */}
         <Route path="/create-group" element={<GroupCreationContainer />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
