@@ -34,7 +34,7 @@ function card(
         subheader={role}
         titleTypographyProps={{ fontFamily: "Pacifico" }}
       />
-      <CardContent>Hello</CardContent>
+      <CardContent></CardContent>
     </Card>
   );
 }
