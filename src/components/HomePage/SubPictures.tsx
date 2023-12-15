@@ -17,10 +17,11 @@ export default function SubPictures() {
     <Box>
       <Divider sx={{ mb: 5 }} />
       <Typography gutterBottom variant="h6" align="justify" component="p">
-        With the help of BoredAPI and user-generated list of activities, this
-        app will help you figure out what to do for your date night, you friend
-        hangout, family outing, and so on. Like these examples below. And you
-        can organize events with your circle of people and plan together.
+        Can’t decide what to do for your next hangout? Spend less time planning
+        and more time hanging with Groupl, an easy-to-use event organizer that
+        helps take the guesswork out of your future hangouts. Your group can
+        come up with activities or we can suggest some ideas for you - check out
+        the ones we have below!
       </Typography>
       <ImageList cols={3} gap={20}>
         {itemData.map((item) => (

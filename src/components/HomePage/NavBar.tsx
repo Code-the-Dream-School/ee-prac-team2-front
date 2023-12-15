@@ -36,7 +36,9 @@ export default function NavBar() {
             >
               Groupals
             </Typography>
-            <Button color="inherit">About</Button>
+            <Button color="inherit">
+              <Link to="/about">About</Link>
+            </Button>
             <Button color="inherit">
               <Link to="/signup">Login / Signup</Link>
             </Button>
