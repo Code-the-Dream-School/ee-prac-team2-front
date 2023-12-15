@@ -14,7 +14,7 @@ const EventsDashboardContainer = ({ eventsCount, setEventsCount, userID }) => {
         // need to eventually change this approach to only fetch events with userID
         // either as a new endpoint or query params?
         const response = await axios.get(
-          "https://dn-live-test.onrender.com/api/v1/events",
+          `${import.meta.env.VITE_BACKEND_URL}events`,
           {
             headers: {
               "Content-Type": "application/json",
