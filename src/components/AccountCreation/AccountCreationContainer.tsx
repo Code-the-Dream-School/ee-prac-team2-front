@@ -15,12 +15,13 @@ const AccountCreationContainer = () => {
   const handleAccountCreate = async (name, email, password) => {
     try {
       const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/auth/signup",
+        `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({
             name,
             email,

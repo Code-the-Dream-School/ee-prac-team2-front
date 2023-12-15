@@ -15,7 +15,13 @@ const CreateGroupForm = ({ onCreateGroup }) => {
       // Fetch users from the API and update the state
       try {
         const response = await fetch(
-          "https://dn-live-test.onrender.com/api/v1/users"
+          `${import.meta.env.VITE_BACKEND_URL}users`,
+          {
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
         );
 
         if (response.ok) {
@@ -49,17 +55,17 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     try {
       // Make a request to create a new group with the form data
       const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/groups",
+        `${import.meta.env.VITE_BACKEND_URL}groups`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({
             groupName,
             description,
-            category,
-            groupMembers: selectedUsers,
+            memberEmails: [],
           }),
         }
       );
