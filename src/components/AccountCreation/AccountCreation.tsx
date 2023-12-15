@@ -3,6 +3,7 @@
 
 // AccountCreation.tsx
 
+import theme from "@components/HomePage/theme";
 import {
   Box,
   Button,
@@ -11,9 +12,6 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-
-import theme from "./../HomePage/theme";
 
 const AccountCreation = ({
   onCreateAccount,
@@ -82,7 +80,9 @@ const AccountCreation = ({
                 fullWidth
                 id="password-field"
                 label="Password"
-                minLength={8}
+                inputProps={{
+                  minLength: 8,
+                }}
                 type="password"
                 margin="normal"
                 onChange={(e) => setPassword(e.target.value)}
