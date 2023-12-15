@@ -11,6 +11,11 @@ const AddEventToGroupForm: React.FC = () => {
   const [eventActivities, setEventActivities] = useState<string[]>([]);
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
 
+  const handleDateTimeChange = (e) => {
+    setEventDateTime(e.target.value);
+    const isoDateTime = `${e.target.value}:00.000Z`;
+    console.log(isoDateTime);
+  };
   const handleCreateEvent = async () => {
     try {
       const authToken = localStorage.getItem("authToken");
@@ -76,7 +81,7 @@ const AddEventToGroupForm: React.FC = () => {
         id="event-date"
         type="datetime-local"
         value={eventDateTime}
-        onChange={(e) => setEventDateTime(e.target.value)}
+        onChange={handleDateTimeChange}
       />
       <br />
       <label htmlFor="event-description">Event Description:</label>
