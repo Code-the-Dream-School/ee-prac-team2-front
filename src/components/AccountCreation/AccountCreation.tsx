@@ -2,7 +2,16 @@
 // @ts-nocheck
 
 // AccountCreation.tsx
-import React from "react";
+
+import theme from "@components/HomePage/theme";
+import {
+  Box,
+  Button,
+  Container,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 
 const AccountCreation = ({
   onCreateAccount,
@@ -24,46 +33,68 @@ const AccountCreation = ({
   };
 
   return (
-    <form onSubmit={handleCreateAccount}>
-      <div>
-        <h2>Create Account</h2>
-        <div>
-          <label>
-            Name:
-            <input
-              required
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email:
-            <input
-              required
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Password:
-            <input
-              required
-              type="password"
-              value={password}
-              minLength={8}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </label>
-        </div>
-        <button type="submit">Create Account</button>
-      </div>
-    </form>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+        >
+          <form onSubmit={handleCreateAccount}>
+            <Typography
+              gutterBottom
+              component="h3"
+              variant="h3"
+              fontFamily="Pacifico"
+            >
+              Create Account
+            </Typography>
+            <div>
+              <TextField
+                required
+                fullWidth
+                id="name-field"
+                type="text"
+                label="Name"
+                margin="normal"
+                defaultValue={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <TextField
+                required
+                fullWidth
+                id="email-field"
+                label="Email"
+                type="email"
+                margin="normal"
+                defaultValue={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <TextField
+                required
+                fullWidth
+                id="password-field"
+                label="Password"
+                inputProps={{
+                  minLength: 8,
+                }}
+                type="password"
+                margin="normal"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button type="submit" variant="contained" sx={{ mt: 4 }}>
+              Sign Up
+            </Button>
+          </form>
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 };
 

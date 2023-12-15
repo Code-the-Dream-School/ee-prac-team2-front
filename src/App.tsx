@@ -3,7 +3,9 @@ import AccountCreationContainer from "@components/AccountCreation/AccountCreatio
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import DataContainer from "@components/DataContainer/DataContainer";
 import HelloWorld from "@components/HelloWorld/HelloWorld";
+import Footer from "@components/HomePage/Footer";
 import HomePage from "@components/HomePage/HomePage";
+import NavBar from "@components/HomePage/NavBar";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
@@ -12,6 +14,7 @@ import styles from "./App.module.css";
 const App = () => {
   return (
     <BrowserRouter>
+      <NavBar />
       <Routes>
         {/* <Route
           path="/"
@@ -42,6 +45,7 @@ const App = () => {
           element={<AuthenticatedContent name={""} email={""} />}
         />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };
