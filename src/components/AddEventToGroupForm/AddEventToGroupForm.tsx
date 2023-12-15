@@ -93,20 +93,20 @@ const AddEventToGroupForm: React.FC = () => {
           <input
             type="checkbox"
             id={`activity-${index}`}
-            value={activity._id}
-            checked={selectedActivities.includes(activity._id)}
+            value={activity.activity}
+            checked={selectedActivities.includes(activity.activity)}
             onChange={(e) => {
               if (e.target.checked) {
-                setSelectedActivities((prev) => [...prev, activity._id]);
+                setSelectedActivities((prev) => [...prev, activity.activity]);
               } else {
                 setSelectedActivities((prev) =>
-                  prev.filter((selected) => selected !== activity._id)
+                  prev.filter((selected) => selected !== activity.activity)
                 );
               }
             }}
           />
           <label htmlFor={`activity-${index}`}>
-            {activity.name}, {activity.description}
+            {activity.activity} - {activity.type}
           </label>
         </div>
       ))}

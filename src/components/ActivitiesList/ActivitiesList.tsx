@@ -27,11 +27,8 @@ export interface Vote {
 }
 
 export interface Activity {
-  _id: number;
-  name: string;
-  description: string;
-  vote: Vote;
-  category: string;
+  activity: string;
+  type: string;
 }
 
 interface ActivitiesListProps {
