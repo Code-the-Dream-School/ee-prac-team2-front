@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-const activityEndpoint = "http://localhost:8000/api/v1/activities";
-const eventEndpoint = "https://dn-live-test.onrender.com/api/v1/events";
+const activityEndpoint = `${import.meta.env.VITE_BACKEND_URL}activities`;
+const eventEndpoint = `${import.meta.env.VITE_BACKEND_URL}events`;
 
 const AddEventToGroupForm: React.FC = () => {
   const [eventName, setEventName] = useState<string>("");
@@ -18,21 +18,19 @@ const AddEventToGroupForm: React.FC = () => {
   };
   const handleCreateEvent = async () => {
     try {
-      const authToken = localStorage.getItem("authToken");
-      const response = await axios.post(
-        eventEndpoint,
-        {
+      const response = await fetch(eventEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
           name: eventName,
           groupID: "6577404f7559e6f996cdf3cd",
-          eventDateTime: setEventDateTime,
+          eventDateTime: eventDateTime,
           activities: selectedActivities,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${authToken}`,
-          },
-        }
-      );
+        }),
+      });
 
       const createdEvent = response.data;
 
