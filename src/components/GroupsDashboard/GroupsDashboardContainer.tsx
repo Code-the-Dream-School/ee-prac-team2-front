@@ -13,6 +13,7 @@ const GroupsDashboardContainer = ({ groupCount, setGroupCount }) => {
           "https://dn-live-test.onrender.com/api/v1/groups",
           {
             headers: {
+              "Cache-Control": "no-cache",
               "Content-Type": "application/json",
             },
             withCredentials: true,

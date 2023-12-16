@@ -6,8 +6,6 @@ import EventsDashboard from "./EventsDashboard";
 const EventsDashboardContainer = ({ eventsCount, setEventsCount, userID }) => {
   const [usersEvents, setUsersEvents] = useState([]);
 
-  const token = localStorage.getItem("token");
-
   useEffect(() => {
     const fetchUsersEvents = async () => {
       try {
@@ -18,6 +16,7 @@ const EventsDashboardContainer = ({ eventsCount, setEventsCount, userID }) => {
           {
             headers: {
               "Content-Type": "application/json",
+              "Cache-Control": "no-cache",
             },
             withCredentials: true,
           }

@@ -23,8 +23,8 @@ const AuthenticatedContent = () => {
         <h3>Your upcoming events:</h3>
         {eventsCount === 0 ? (
           <p>
-            You currently do not have any upcoming events. Create a group or
-            click on an existing group to create an event.
+            You currently do not have any upcoming events. Create a group below
+            or click on an existing group to create an event.
           </p>
         ) : (
           <EventsDashboardContainer

@@ -40,11 +40,11 @@ const AccountCreationContainer = () => {
         console.log("Account created successfully:", responseData);
 
         setIsAuthenticated(true);
-        // will need to update this with user.doc
+
         setUser({
-          userID: responseData.userID,
-          name: responseData.name,
-          email: responseData.email,
+          userID: responseData.user._id,
+          name: responseData.user.name,
+          email: responseData.user.email,
         });
         console.log(
           `Account created: Name - ${name}, Email - ${email}, Password - ${password}`
@@ -82,11 +82,11 @@ const AccountCreationContainer = () => {
         setName(responseData.name);
 
         setIsAuthenticated(true);
-        // will need to update this with user.doc
+
         setUser({
-          userID: responseData.userID,
-          name: responseData.name,
-          email: responseData.email,
+          userID: responseData.user._id,
+          name: responseData.user.name,
+          email: responseData.user.email,
         });
         console.log(
           `Account logged in: Name - ${name}, Email - ${email}, Password - ${password}`
