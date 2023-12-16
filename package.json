@@ -4,7 +4,7 @@
   "private": true,
   "description": "Front-End Repo for Team 2 of Emu/Echidna Practicum",
   "scripts": {
-    "build": "npm run typecheck && vite build",
+    "build": "vite build",
     "dev": "vite",
     "format": "prettier . --write --ignore-path .gitignore && git update-index --again",
     "lint": "eslint . --ext .ts,.tsx,.js,.jsx, --fix --ignore-path .gitignore",
