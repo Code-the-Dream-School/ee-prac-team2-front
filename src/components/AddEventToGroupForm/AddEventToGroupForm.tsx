@@ -1,3 +1,4 @@
+import { Activity } from "@components/ActivitiesList/ActivitiesList";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -8,7 +9,7 @@ const AddEventToGroupForm: React.FC = () => {
   const [eventName, setEventName] = useState<string>("");
   const [eventDateTime, setEventDateTime] = useState<string>("");
   const [eventDescription, setEventDescription] = useState<string>("");
-  const [eventActivities, setEventActivities] = useState<string[]>([]);
+  const [eventActivities, setEventActivities] = useState<Activity[]>([]);
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
 
   const handleDateTimeChange = (e: React.FormEvent<HTMLInputElement>) => {
