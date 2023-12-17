@@ -10,6 +10,8 @@ import NavBar from "@components/HomePage/NavBar";
 import ViewSingleEventContainer from "@components/ViewSingleEvent/ViewSingleEventContainer";
 import ViewSingleGroup from "@components/ViewSingleGroup/ViewSingleGroup";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
+import EventContainer from "@containers/EventContainer";
+import GroupContainer from "@containers/GroupContainer";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 
 import styles from "./App.module.css";
@@ -47,6 +49,14 @@ const App = () => {
         <Route path="/account" element={<AuthenticatedContent />} />
         <Route path="/groups/:id" element={<ViewSingleGroup />} />
         <Route path="/events/:id" element={<ViewSingleEventContainer />} />
+        {/*TODO needs real path with group id */}
+        <Route path="/group" Component={GroupContainer} />
+        {/* TODO needs real path with group and event ids */}
+        <Route path="/event" Component={EventContainer} />
+        <Route
+          path="/account"
+          element={<AuthenticatedContent name={""} email={""} />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
