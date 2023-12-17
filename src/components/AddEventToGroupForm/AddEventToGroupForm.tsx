@@ -11,11 +11,12 @@ const AddEventToGroupForm: React.FC = () => {
   const [eventActivities, setEventActivities] = useState<string[]>([]);
   const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
 
-  const handleDateTimeChange = (e) => {
-    setEventDateTime(e.target.value);
-    const isoDateTime = `${e.target.value}:00.000Z`;
-    console.log(isoDateTime);
+  const handleDateTimeChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const selectedDateTime = e.currentTarget.value;
+    const isoDateTime = new Date(selectedDateTime).toISOString();
+    setEventDateTime(isoDateTime);
   };
+
   const handleCreateEvent = async () => {
     try {
       const response = await fetch(eventEndpoint, {
@@ -32,9 +33,7 @@ const AddEventToGroupForm: React.FC = () => {
         }),
       });
 
-      const createdEvent = response.data;
-
-      console.log("Event created:", createdEvent);
+      console.log("Event created:", response);
     } catch (error) {
       console.error("Error creating event:", error);
     }
@@ -78,7 +77,7 @@ const AddEventToGroupForm: React.FC = () => {
       <input
         id="event-date"
         type="datetime-local"
-        value={eventDateTime}
+        defaultValue={eventDateTime.substring(0, 16)}
         onChange={handleDateTimeChange}
       />
       <br />
