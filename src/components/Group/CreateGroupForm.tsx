@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const CreateGroupForm = ({ onCreateGroup }) => {
@@ -14,21 +15,21 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     const fetchUsers = async () => {
       // Fetch users from the API and update the state
       try {
-        const response = await fetch(
+        const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}users`,
           {
-            credentials: "include",
             headers: {
               "Content-Type": "application/json",
             },
+            withCredentials: true,
           }
         );
 
-        if (response.ok) {
-          const { users } = await response.json();
+        if (response) {
+          const { users } = response.data;
           setUsers(users);
         } else {
-          console.error("Failed to fetch users:", response.statusText);
+          console.error("Failed to fetch users:", response);
         }
       } catch (error) {
         console.error("Error fetching registered users:", error);
@@ -54,32 +55,31 @@ const CreateGroupForm = ({ onCreateGroup }) => {
 
     try {
       // Make a request to create a new group with the form data
-      const response = await fetch(
+      const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}groups`,
         {
-          method: "POST",
+          groupName,
+          description,
+          memberEmails: [],
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
-          body: JSON.stringify({
-            groupName,
-            description,
-            memberEmails: [],
-          }),
+          withCredentials: true,
         }
       );
 
-      if (response.ok) {
-        const { newGroupId } = await response.json();
+      if (response) {
+        const newGroupId = response.data.newGroup._id;
         // Call the parent component's callback with the new group ID
         onCreateGroup(newGroupId);
         console.log("Group created successfully:", newGroupId);
       } else {
-        console.error("Group creation failed.");
+        console.error("Group creation failed.", response);
       }
     } catch (error) {
-      console.error("Error during group creation:", error);
+      console.error("Error during group creation:", error.response.data.msg);
     }
   };
 

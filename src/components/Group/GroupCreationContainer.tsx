@@ -2,6 +2,7 @@
 // @ts-nocheck
 // GroupCreationContainer.jsx
 
+import axios from "axios";
 import React, { useState } from "react";
 
 import CreateGroupForm from "./CreateGroupForm";
@@ -17,20 +18,22 @@ const GroupCreationContainer = () => {
   const handleGroupCreation = async (groupData) => {
     // Dummy API call (replace with actual API call)
     try {
-      const response = await fetch("https://api.example.com/create-group", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(groupData),
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}groups`,
+        groupData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
 
-      if (response.ok) {
+      if (response) {
         // Set success result with the new group ID
-        const responseData = await response.json();
         setGroupCreationResult({
           isSuccess: true,
-          newGroupId: responseData.id,
+          newGroupId: response.id,
         });
       } else {
         // Set error result

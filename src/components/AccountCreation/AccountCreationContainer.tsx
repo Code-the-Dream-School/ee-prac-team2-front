@@ -2,6 +2,7 @@
 // @ts-nocheck
 
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
+import axios from "axios";
 import React, { useState } from "react";
 
 import AccountCreation from "./AccountCreation";
@@ -14,25 +15,23 @@ const AccountCreationContainer = () => {
 
   const handleAccountCreate = async (name, email, password) => {
     try {
-      const response = await fetch(
+      const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
         {
-          method: "POST",
+          name,
+          email,
+          password,
+        },
+        {
           headers: {
             "Content-Type": "application/json",
           },
-          credentials: "include",
-          body: JSON.stringify({
-            name,
-            email,
-            password,
-          }),
+          withCredentials: true,
         }
       );
 
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Account created successfully:", responseData);
+      if (response) {
+        console.log("Account created successfully:", response.data);
 
         setIsAuthenticated(true);
         console.log(
@@ -42,7 +41,7 @@ const AccountCreationContainer = () => {
         console.error("Account creation failed.");
       }
     } catch (error) {
-      console.error("Error during account creation:", error);
+      console.error("Error during account creation:", error.response.data.msg);
     }
   };
 
