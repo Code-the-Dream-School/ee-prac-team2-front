@@ -1,5 +1,12 @@
 import { Activity } from "@components/ActivitiesList/ActivitiesList";
-import axios from "axios";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  TextField,
+} from "@mui/material";
+import axios, { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
 
 import EventStatus from "./EventStatus";
@@ -9,7 +16,9 @@ const eventEndpoint = `${import.meta.env.VITE_BACKEND_URL}events`;
 
 const AddEventToGroupForm: React.FC = () => {
   const [eventName, setEventName] = useState<string>("");
-  const [eventDateTime, setEventDateTime] = useState<string>("");
+  const [eventDateTime, setEventDateTime] = useState<string>(
+    new Date().toISOString()
+  );
   const [eventDescription, setEventDescription] = useState<string>("");
   const [eventActivities, setEventActivities] = useState<Activity[]>([]);
   const [selectedActivities, setSelectedActivities] = useState<Activity[]>([]);
@@ -18,7 +27,7 @@ const AddEventToGroupForm: React.FC = () => {
     message: string;
   } | null>(null);
 
-  const handleDateTimeChange = (e: React.FormEvent<HTMLInputElement>) => {
+  const handleDateTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDateTime = e.currentTarget.value;
     const isoDateTime = new Date(selectedDateTime).toISOString();
     setEventDateTime(isoDateTime);
@@ -46,12 +55,22 @@ const AddEventToGroupForm: React.FC = () => {
       setFormSubmitted({ isSuccess: true, message: "Event added!" });
     } catch (error) {
       console.error("Error creating event:", error);
+      const generic =
+        "An error occurred while creating the event. Please try again.";
+      const err = axios.isAxiosError(error) ? (error as AxiosError) : undefined;
       setFormSubmitted({
         isSuccess: false,
-        message:
-          "An error occurred while creating the event. Please try again.",
+        message: err ? `${err.message}` : generic,
       });
     }
+  };
+
+  const handleAddMoreEvents = () => {
+    setEventName("");
+    setEventDescription("");
+    setEventDateTime(new Date().toISOString());
+    setSelectedActivities([]);
+    setFormSubmitted(null);
   };
 
   useEffect(() => {
@@ -82,66 +101,67 @@ const AddEventToGroupForm: React.FC = () => {
       {formSubmitted === null ? (
         <div>
           <h2>Create Event</h2>
-          <label htmlFor="event-name">Event Name:</label>
-          <input
+          <TextField
             id="event-name"
             type="text"
+            label="Event Name:"
             value={eventName}
             onChange={(e) => setEventName(e.target.value)}
           />
           <br />
-          <label htmlFor="event-date">Event Date and Time:</label>
-          <input
+          <TextField
             id="event-date"
             type="datetime-local"
+            label="Event Date and Time:"
             defaultValue={eventDateTime.substring(0, 16)}
             onChange={handleDateTimeChange}
           />
           <br />
-          <label htmlFor="event-description">Event Description:</label>
-          <input
+          <TextField
             id="event-description"
             type="text"
+            label="Event description:"
             value={eventDescription}
             onChange={(e) => setEventDescription(e.target.value)}
           />
           <br />
-          <label htmlFor="event-activities">Event Activities:</label>
-          {eventActivities.map((activity, index) => (
-            <div key={`activity-${index}`}>
-              <input
-                type="checkbox"
-                id={`activity-${index}`}
-                value={activity.activity}
-                checked={selectedActivities.some(
-                  (selected) =>
-                    selected.activity === activity.activity &&
-                    selected.type === activity.type
-                )}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setSelectedActivities((prev) => [
-                      ...prev,
-                      { activity: activity.activity, type: activity.type },
-                    ]);
-                  } else {
-                    setSelectedActivities((prev) =>
-                      prev.filter(
-                        (selected) =>
-                          !(
-                            selected.activity === activity.activity &&
-                            selected.type === activity.type
+          <FormLabel component="legend">Event Activities:</FormLabel>
+          <FormGroup>
+            {eventActivities.map((activity, index) => (
+              <FormControlLabel
+                key={`activity-${index}`}
+                control={
+                  <Checkbox
+                    checked={selectedActivities.some(
+                      (selected) =>
+                        selected.activity === activity.activity &&
+                        selected.type === activity.type
+                    )}
+                    name={activity.activity}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        setSelectedActivities((prev) => [
+                          ...prev,
+                          { activity: activity.activity, type: activity.type },
+                        ]);
+                      } else {
+                        setSelectedActivities((prev) =>
+                          prev.filter(
+                            (selected) =>
+                              !(
+                                selected.activity === activity.activity &&
+                                selected.type === activity.type
+                              )
                           )
-                      )
-                    );
-                  }
-                }}
+                        );
+                      }
+                    }}
+                  />
+                }
+                label={activity.activity}
               />
-              <label htmlFor={`activity-${index}`}>
-                {activity.activity} - {activity.type}
-              </label>
-            </div>
-          ))}
+            ))}
+          </FormGroup>
           <br />
           <button onClick={handleCreateEvent}>Create Event</button>
         </div>
@@ -149,7 +169,7 @@ const AddEventToGroupForm: React.FC = () => {
         <EventStatus
           isSuccess={formSubmitted.isSuccess}
           message={formSubmitted.message}
-          onAddMoreEvents={() => setFormSubmitted(null)}
+          onAddMoreEvents={handleAddMoreEvents}
         />
       )}
     </div>
