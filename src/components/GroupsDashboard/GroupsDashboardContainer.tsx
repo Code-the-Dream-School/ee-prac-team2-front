@@ -13,7 +13,7 @@ const GroupsDashboardContainer = ({ groupCount, setGroupCount }) => {
     const fetchGroups = async () => {
       try {
         const response = await axios.get(
-          "https://dn-live-test.onrender.com/api/v1/groups",
+          `${import.meta.env.VITE_BACKEND_URL}groups`,
           {
             headers: {
               "Cache-Control": "no-cache",
