@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 
 import GroupsDashboard from "./GroupsDashboard";
 
-const GroupsDashboardContainer = ({ groupCount, setGroupCount }) => {
+const GroupsDashboardContainer = ({ setGroupCount }) => {
   const [groups, setGroups] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchGroups = async () => {
@@ -25,6 +26,7 @@ const GroupsDashboardContainer = ({ groupCount, setGroupCount }) => {
         const fetchedGroups = response.data;
         setGroups(fetchedGroups.groups);
         setGroupCount(fetchedGroups.count);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching activities:", error);
         if (axios.isAxiosError(error)) {
@@ -41,15 +43,7 @@ const GroupsDashboardContainer = ({ groupCount, setGroupCount }) => {
     fetchGroups();
   }, []);
 
-  return (
-    <div>
-      {groups.length > 0 ? (
-        <GroupsDashboard groups={groups} />
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+  return <GroupsDashboard groups={groups} isLoading={isLoading} />;
 };
 
 export default GroupsDashboardContainer;
