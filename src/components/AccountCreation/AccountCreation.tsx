@@ -13,6 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 
+import AccountCreationContainer from "./AccountCreationContainer";
+
 const AccountCreation = ({
   onCreateAccount,
   name,
@@ -21,6 +23,7 @@ const AccountCreation = ({
   setName,
   setEmail,
   setPassword,
+  onIsSignup,
 }) => {
   const handleCreateAccount = (e) => {
     e.preventDefault();
@@ -30,6 +33,10 @@ const AccountCreation = ({
     } else {
       alert("Please enter a valid name, email, and password.");
     }
+  };
+
+  const handleSwitch = () => {
+    onIsSignup(false);
   };
 
   return (
@@ -92,7 +99,7 @@ const AccountCreation = ({
               Sign Up
             </Button>
             <div>
-              <Button sx={{ mt: 4 }}>
+              <Button sx={{ mt: 4 }} onClick={handleSwitch}>
                 Already have an account? Log in here.
               </Button>
             </div>

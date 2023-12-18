@@ -1,3 +1,4 @@
+import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
 import theme from "@components/HomePage/theme";
 import {
   Box,
@@ -9,7 +10,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-const Login = ({ loginUser }) => {
+const Login = ({ loginUser, onIsSignup }) => {
   const [currentUser, setCurrentUser] = useState({
     email: "",
     password: "",
@@ -32,6 +33,10 @@ const Login = ({ loginUser }) => {
     });
   };
 
+  const handleSwitch = () => {
+    onIsSignup(true);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <Container>
@@ -48,7 +53,7 @@ const Login = ({ loginUser }) => {
               variant="h3"
               fontFamily="Pacifico"
             >
-              Sign In Account
+              Welcome Back!
             </Typography>
             <div>
               <TextField
@@ -79,8 +84,8 @@ const Login = ({ loginUser }) => {
               Log In
             </Button>
             <div>
-              <Button sx={{ mt: 4 }}>
-                Don\'t have an account? Sign up here.
+              <Button sx={{ mt: 4 }} onClick={handleSwitch}>
+                Don't have an account? Sign up here.
               </Button>
             </div>
           </form>

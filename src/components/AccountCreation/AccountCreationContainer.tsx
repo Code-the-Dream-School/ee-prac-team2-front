@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
+//import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import Login from "@components/Login/Login";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,12 @@ const AccountCreationContainer = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
-
+  const [isSignup, setIsSignup] = useState(true);
   const navigate = useNavigate();
+
+  const handleSignup = (data) => {
+    setIsSignup(data);
+  };
 
   const handleAccountCreate = async (name, email, password) => {
     try {
@@ -107,7 +111,7 @@ const AccountCreationContainer = () => {
 
   return (
     <div>
-      {signup ? (
+      {isSignup ? (
         <AccountCreation
           name={name}
           email={email}
@@ -116,6 +120,7 @@ const AccountCreationContainer = () => {
           setEmail={setEmail}
           setPassword={setPassword}
           onCreateAccount={handleAccountCreate}
+          onIsSignup={handleSignup}
         />
       ) : (
         <Login
@@ -126,6 +131,7 @@ const AccountCreationContainer = () => {
           setEmail={setEmail}
           setPassword={setPassword}
           loginUser={loginUser}
+          onIsSignup={handleSignup}
         />
       )}
     </div>
