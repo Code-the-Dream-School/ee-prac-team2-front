@@ -13,7 +13,7 @@ const GroupsDashboard = ({ groups, isLoading, userID }) => {
           {groups.map((group) => {
             return (
               <li key={group._id}>
-                <Link to={`/groups/${group._id}`} userID={userID}>
+                <Link to={`/groups/${group._id}`} state={{ userID }}>
                   {group.groupName}
                 </Link>
               </li>

@@ -1,13 +1,12 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import axios from "axios";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-
 import GroupView from "@components/GroupView/GroupView";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
 
-export default function GroupContainer({ userID }) {
+export default function GroupContainer() {
   const [group, setGroup] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isMember, setIsMember] = useState(false);
@@ -15,8 +14,11 @@ export default function GroupContainer({ userID }) {
 
   const { id } = useParams();
 
+  const location = useLocation();
+  const userID = location.state?.userID;
+
   useEffect(() => {
-    const handleFetchGroupView = async (groupID) => {
+    const handleFetchGroupView = async (groupID, userID) => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}groups/${groupID}`,
@@ -30,13 +32,14 @@ export default function GroupContainer({ userID }) {
         );
 
         const currentGroup = response.data;
+
         setGroup(currentGroup);
         setIsLoading(false);
 
-        if (currentGroup.members.includes(userID)) {
+        if (currentGroup.members.some((member) => member._id === userID)) {
           setIsMember(true);
         }
-        if (currentGroup.owner === userID) {
+        if (currentGroup.owner._id === userID) {
           setIsOwner(true);
         }
       } catch (error) {
@@ -52,7 +55,7 @@ export default function GroupContainer({ userID }) {
       }
     };
 
-    handleFetchGroupView(id);
+    handleFetchGroupView(id, userID);
   }, []);
   return (
     <GroupView
