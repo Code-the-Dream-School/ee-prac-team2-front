@@ -3,6 +3,7 @@
 
 import EventsList from "@components/EventsList/EventsList";
 import MembersList from "@components/MembersList/MembersList";
+import { Link } from "react-router-dom";
 
 export default function GroupView({ isLoading, group, isOwner, isMember }) {
   return (
@@ -20,6 +21,9 @@ export default function GroupView({ isLoading, group, isOwner, isMember }) {
           )}
           <MembersList />
           <EventsList />
+          <Link to="/events/" state={{ groupID: group._id }}>
+            Create an event for this group
+          </Link>
           {isOwner ? <button>Delete group</button> : <button></button>}
         </div>
       )}

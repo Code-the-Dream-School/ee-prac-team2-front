@@ -6,8 +6,6 @@ import GroupCreationContainer from "@components/Group/GroupCreationContainer";
 import Footer from "@components/HomePage/Footer";
 import HomePage from "@components/HomePage/HomePage";
 import NavBar from "@components/HomePage/NavBar";
-import ViewSingleEventContainer from "@components/ViewSingleEvent/ViewSingleEventContainer";
-import ViewSingleGroup from "@components/ViewSingleGroup/ViewSingleGroup";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import EventContainer from "@containers/EventContainer";
 import GroupContainer from "@containers/GroupContainer";
@@ -25,13 +23,10 @@ const App = () => {
         <Route path="/signup" element={<AccountCreationContainer />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/account" element={<AuthenticatedContent />} />
-        <Route path="/groups/:id" element={<ViewSingleGroup />} />
-        <Route path="/events/:id" element={<ViewSingleEventContainer />} />
-        {/*TODO needs real path with group id */}
-        <Route path="/group" Component={GroupContainer} />
-        <Route path="/events" Component={AddEventToGroupForm} />
+        <Route path="/groups/:id" Component={GroupContainer} />
+        <Route path="/events/" Component={AddEventToGroupForm} />
         {/* TODO needs real path with group and event ids */}
-        <Route path="/event" Component={EventContainer} />
+        <Route path="/events/:id" Component={EventContainer} />
         {/* New route for group creation */}
         <Route path="/create-group" element={<GroupCreationContainer />} />
       </Routes>
