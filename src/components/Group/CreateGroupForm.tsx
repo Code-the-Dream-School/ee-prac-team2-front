@@ -68,15 +68,15 @@ const CreateGroupForm = ({ onCreateGroup }) => {
       );
 
       if (response) {
-        console.log("Group created successfully:", response);
-        onCreateGroup(response); // Call the parent component's callback
+        const newGroupId = response.data.newGroup._id;
+        // Call the parent component's callback with the new group ID
+        onCreateGroup(newGroupId);
+        console.log("Group created successfully:", newGroupId);
       } else {
-        console.error("Group creation failed.");
-        // Handle errors or provide user feedback
+        console.error("Group creation failed.", response);
       }
     } catch (error) {
-      console.log(error);
-      console.error("Error during group creation:", error);
+      console.error("Error during group creation:", error.response.data.msg);
     }
   };
 

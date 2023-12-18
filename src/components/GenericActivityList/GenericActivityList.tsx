@@ -1,6 +1,6 @@
 import { Activity } from "@components/ActivitiesList/ActivitiesList";
 import ItemList from "@components/ItemList/ItemList";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 interface ActivitiesListProps {
   activities: Activity[];
