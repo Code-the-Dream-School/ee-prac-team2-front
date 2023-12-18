@@ -24,7 +24,7 @@ const AccountCreationContainer = () => {
   const handleAccountCreate = async (name, email, password) => {
     try {
       const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/auth/signup",
+        `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
         {
           method: "POST",
           headers: {
@@ -64,7 +64,7 @@ const AccountCreationContainer = () => {
   const loginUser = async (currentUser) => {
     try {
       const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/auth/login",
+        `${import.meta.env.VITE_BACKEND_URL}auth/login`,
         {
           method: "POST",
           headers: {
