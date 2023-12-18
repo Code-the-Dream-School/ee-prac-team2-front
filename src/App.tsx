@@ -44,14 +44,9 @@ const App = () => {
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/signup" element={<AccountCreationContainer />} />
         <Route path="/about" element={<AboutPage />} />
-        {/*TODO needs real path with group id */}
-        <Route path="/group" Component={GroupContainer} />
-        {/* TODO needs real path with group and event ids */}
-        <Route path="/event" Component={EventContainer} />
-        <Route
-          path="/account"
-          element={<AuthenticatedContent name={""} email={""} />}
-        />
+        <Route path="/groups/:id" Component={GroupContainer} />
+        <Route path="/events/:id" Component={EventContainer} />
+        <Route path="/account" element={<AuthenticatedContent />} />
       </Routes>
       <Footer />
     </BrowserRouter>
