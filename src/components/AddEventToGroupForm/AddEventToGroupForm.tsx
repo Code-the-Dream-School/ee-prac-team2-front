@@ -2,6 +2,8 @@ import { Activity } from "@components/ActivitiesList/ActivitiesList";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+import EventStatus from "./EventStatus";
+
 const activityEndpoint = `${import.meta.env.VITE_BACKEND_URL}activities`;
 const eventEndpoint = `${import.meta.env.VITE_BACKEND_URL}events`;
 
@@ -11,6 +13,10 @@ const AddEventToGroupForm: React.FC = () => {
   const [eventDescription, setEventDescription] = useState<string>("");
   const [eventActivities, setEventActivities] = useState<Activity[]>([]);
   const [selectedActivities, setSelectedActivities] = useState<Activity[]>([]);
+  const [formSubmitted, setFormSubmitted] = useState<{
+    isSuccess: boolean;
+    message: string;
+  } | null>(null);
 
   const handleDateTimeChange = (e: React.FormEvent<HTMLInputElement>) => {
     const selectedDateTime = e.currentTarget.value;
@@ -37,8 +43,14 @@ const AddEventToGroupForm: React.FC = () => {
       );
 
       console.log("Event created:", response.data.msg);
+      setFormSubmitted({ isSuccess: true, message: "Event added!" });
     } catch (error) {
       console.error("Error creating event:", error);
+      setFormSubmitted({
+        isSuccess: false,
+        message:
+          "An error occurred while creating the event. Please try again.",
+      });
     }
   };
 
@@ -67,69 +79,79 @@ const AddEventToGroupForm: React.FC = () => {
 
   return (
     <div>
-      <h2>Create Event</h2>
-      <label htmlFor="event-name">Event Name:</label>
-      <input
-        id="event-name"
-        type="text"
-        value={eventName}
-        onChange={(e) => setEventName(e.target.value)}
-      />
-      <br />
-      <label htmlFor="event-date">Event Date and Time:</label>
-      <input
-        id="event-date"
-        type="datetime-local"
-        defaultValue={eventDateTime.substring(0, 16)}
-        onChange={handleDateTimeChange}
-      />
-      <br />
-      <label htmlFor="event-description">Event Description:</label>
-      <input
-        id="event-description"
-        type="text"
-        value={eventDescription}
-        onChange={(e) => setEventDescription(e.target.value)}
-      />
-      <br />
-      <label htmlFor="event-activities">Event Activities:</label>
-      {eventActivities.map((activity, index) => (
-        <div key={`activity-${index}`}>
+      {formSubmitted === null ? (
+        <div>
+          <h2>Create Event</h2>
+          <label htmlFor="event-name">Event Name:</label>
           <input
-            type="checkbox"
-            id={`activity-${index}`}
-            value={activity.activity}
-            checked={selectedActivities.some(
-              (selected) =>
-                selected.activity === activity.activity &&
-                selected.type === activity.type
-            )}
-            onChange={(e) => {
-              if (e.target.checked) {
-                setSelectedActivities((prev) => [
-                  ...prev,
-                  { activity: activity.activity, type: activity.type },
-                ]);
-              } else {
-                setSelectedActivities((prev) =>
-                  prev.filter(
-                    (selected) =>
-                      !(
-                        selected.activity === activity.activity &&
-                        selected.type === activity.type
-                      )
-                  )
-                );
-              }
-            }}
+            id="event-name"
+            type="text"
+            value={eventName}
+            onChange={(e) => setEventName(e.target.value)}
           />
-          <label htmlFor={`activity-${index}`}>
-            {activity.activity} - {activity.type}
-          </label>
+          <br />
+          <label htmlFor="event-date">Event Date and Time:</label>
+          <input
+            id="event-date"
+            type="datetime-local"
+            defaultValue={eventDateTime.substring(0, 16)}
+            onChange={handleDateTimeChange}
+          />
+          <br />
+          <label htmlFor="event-description">Event Description:</label>
+          <input
+            id="event-description"
+            type="text"
+            value={eventDescription}
+            onChange={(e) => setEventDescription(e.target.value)}
+          />
+          <br />
+          <label htmlFor="event-activities">Event Activities:</label>
+          {eventActivities.map((activity, index) => (
+            <div key={`activity-${index}`}>
+              <input
+                type="checkbox"
+                id={`activity-${index}`}
+                value={activity.activity}
+                checked={selectedActivities.some(
+                  (selected) =>
+                    selected.activity === activity.activity &&
+                    selected.type === activity.type
+                )}
+                onChange={(e) => {
+                  if (e.target.checked) {
+                    setSelectedActivities((prev) => [
+                      ...prev,
+                      { activity: activity.activity, type: activity.type },
+                    ]);
+                  } else {
+                    setSelectedActivities((prev) =>
+                      prev.filter(
+                        (selected) =>
+                          !(
+                            selected.activity === activity.activity &&
+                            selected.type === activity.type
+                          )
+                      )
+                    );
+                  }
+                }}
+              />
+              <label htmlFor={`activity-${index}`}>
+                {activity.activity} - {activity.type}
+              </label>
+            </div>
+          ))}
+          <br />
+          <button onClick={handleCreateEvent}>Create Event</button>
         </div>
-      ))}
-      <br />
-      <button onClick={handleCreateEvent}>Create Event</button>
+      ) : (
+        <EventStatus
+          isSuccess={formSubmitted.isSuccess}
+          message={formSubmitted.message}
+          onAddMoreEvents={() => setFormSubmitted(null)}
+        />
+      )}
     </div>
   );
 };
