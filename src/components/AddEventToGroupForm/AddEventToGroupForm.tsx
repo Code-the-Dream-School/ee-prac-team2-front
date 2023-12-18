@@ -39,7 +39,7 @@ const AddEventToGroupForm: React.FC = () => {
         eventEndpoint,
         {
           name: eventName,
-          groupID: "657f6d3d73f35df49d8ffac2",
+          groupID: "657d0f422cb49ec9046b3b8c",
           eventDateTime: eventDateTime,
           activities: selectedActivities,
         },
