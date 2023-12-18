@@ -107,10 +107,7 @@ const AccountCreationContainer = () => {
 
   return (
     <div>
-      {/* {isAuthenticated ? (
-        <AuthenticatedContent name={name} email={email} />
-      ) : ( */}
-      <div>
+      {signup ? (
         <AccountCreation
           name={name}
           email={email}
@@ -120,6 +117,7 @@ const AccountCreationContainer = () => {
           setPassword={setPassword}
           onCreateAccount={handleAccountCreate}
         />
+      ) : (
         <Login
           name={name}
           email={email}
@@ -129,7 +127,7 @@ const AccountCreationContainer = () => {
           setPassword={setPassword}
           loginUser={loginUser}
         />
-      </div>
+      )}
     </div>
   );
 };

@@ -78,6 +78,11 @@ const Login = ({ loginUser }) => {
             <Button type="submit" variant="contained" sx={{ mt: 4 }}>
               Log In
             </Button>
+            <div>
+              <Button sx={{ mt: 4 }}>
+                Don\'t have an account? Sign up here.
+              </Button>
+            </div>
           </form>
         </Box>
       </Container>

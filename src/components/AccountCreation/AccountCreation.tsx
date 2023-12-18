@@ -91,6 +91,11 @@ const AccountCreation = ({
             <Button type="submit" variant="contained" sx={{ mt: 4 }}>
               Sign Up
             </Button>
+            <div>
+              <Button sx={{ mt: 4 }}>
+                Already have an account? Log in here.
+              </Button>
+            </div>
           </form>
         </Box>
       </Container>
