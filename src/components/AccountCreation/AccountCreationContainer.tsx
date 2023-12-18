@@ -14,8 +14,12 @@ const AccountCreationContainer = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
-
+  const [isSignup, setIsSignup] = useState(true);
   const navigate = useNavigate();
+
+  const handleSignup = (data) => {
+    setIsSignup(data);
+  };
 
   const handleAccountCreate = async (name, email, password) => {
     try {
@@ -107,10 +111,7 @@ const AccountCreationContainer = () => {
 
   return (
     <div>
-      {/* {isAuthenticated ? (
-        <AuthenticatedContent name={name} email={email} />
-      ) : ( */}
-      <div>
+      {isSignup ? (
         <AccountCreation
           name={name}
           email={email}
@@ -119,8 +120,9 @@ const AccountCreationContainer = () => {
           setEmail={setEmail}
           setPassword={setPassword}
           onCreateAccount={handleAccountCreate}
+          onIsSignup={handleSignup}
         />
-        <h2>Already have an account? Sign in here:</h2>
+      ) : (
         <Login
           name={name}
           email={email}
@@ -129,8 +131,9 @@ const AccountCreationContainer = () => {
           setEmail={setEmail}
           setPassword={setPassword}
           loginUser={loginUser}
+          onIsSignup={handleSignup}
         />
-      </div>
+      )}
     </div>
   );
 };
