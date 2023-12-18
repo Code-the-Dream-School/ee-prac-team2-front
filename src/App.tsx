@@ -7,8 +7,6 @@ import HelloWorld from "@components/HelloWorld/HelloWorld";
 import Footer from "@components/HomePage/Footer";
 import HomePage from "@components/HomePage/HomePage";
 import NavBar from "@components/HomePage/NavBar";
-import ViewSingleEventContainer from "@components/ViewSingleEvent/ViewSingleEventContainer";
-import ViewSingleGroup from "@components/ViewSingleGroup/ViewSingleGroup";
 import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import EventContainer from "@containers/EventContainer";
 import GroupContainer from "@containers/GroupContainer";
@@ -46,13 +44,9 @@ const App = () => {
         <Route path="/activities" Component={ActivitiesListContainer} />
         <Route path="/signup" element={<AccountCreationContainer />} />
         <Route path="/about" element={<AboutPage />} />
-        {/*TODO needs real path with group id */}
-        <Route path="/group" Component={GroupContainer} />
-        {/* TODO needs real path with group and event ids */}
-        <Route path="/event" Component={EventContainer} />
+        <Route path="/groups/:id" Component={GroupContainer} />
+        <Route path="/events/:id" Component={EventContainer} />
         <Route path="/account" element={<AuthenticatedContent />} />
-        <Route path="/groups/:id" element={<ViewSingleGroup />} />
-        <Route path="/events/:id" element={<ViewSingleEventContainer />} />
       </Routes>
       <Footer />
     </BrowserRouter>
