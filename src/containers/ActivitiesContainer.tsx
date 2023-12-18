@@ -4,7 +4,7 @@ import ActivitiesList, {
 import axios from "axios";
 import React, { ReactElement, useEffect, useState } from "react";
 
-const URL = "http://localhost:8000/api/v1/activities";
+const URL = `${import.meta.env.VITE_BACKEND_URL}activities`;
 
 const ActivitiesListContainer: React.FC = (): ReactElement => {
   const [activities, setActivities] = useState<Activity[]>([]);

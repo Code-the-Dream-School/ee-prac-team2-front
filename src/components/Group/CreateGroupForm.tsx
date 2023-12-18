@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
 
@@ -14,7 +15,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(
-          "https://dn-live-test.onrender.com/api/v1/users"
+          `${import.meta.env.VITE_BACKEND_URL}users`
         );
 
         if (response.ok) {
@@ -55,26 +56,26 @@ const CreateGroupForm = ({ onCreateGroup }) => {
 
     try {
       console.log("Sending group creation request with data:", groupData);
-      const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/groups",
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}groups`,
+        groupData,
         {
-          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(groupData),
+          withCredentials: true,
         }
       );
 
-      if (response.ok) {
-        const responseData = await response.json();
-        console.log("Group created successfully:", responseData);
-        onCreateGroup(responseData); // Call the parent component's callback
+      if (response) {
+        console.log("Group created successfully:", response);
+        onCreateGroup(response); // Call the parent component's callback
       } else {
         console.error("Group creation failed.");
         // Handle errors or provide user feedback
       }
     } catch (error) {
+      console.log(error);
       console.error("Error during group creation:", error);
     }
   };
