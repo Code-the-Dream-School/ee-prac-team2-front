@@ -2,7 +2,6 @@
 // @ts-nocheck
 
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
-// import { includes } from "cypress/types/lodash";
 import React, { useState } from "react";
 
 import AccountCreation from "./AccountCreation";
@@ -16,7 +15,7 @@ const AccountCreationContainer = () => {
   const handleAccountCreate = async (name, email, password) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
+        `${import.meta.env.VITE_BACKEND_URL}auth/login`,
         {
           method: "POST",
           headers: {

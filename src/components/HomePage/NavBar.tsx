@@ -1,3 +1,4 @@
+import { AccountCircleTwoTone } from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
@@ -39,8 +40,13 @@ export default function NavBar() {
             <Button color="inherit">
               <Link to="/about">About</Link>
             </Button>
-            <Button color="inherit">
-              <Link to="/signup">Login / Signup</Link>
+            <Button
+              variant="outlined"
+              color="inherit"
+              endIcon={<AccountCircleTwoTone />}
+              sx={{ ml: 4 }}
+            >
+              <Link to="/signup">Login</Link>
             </Button>
           </Toolbar>
         </AppBar>
