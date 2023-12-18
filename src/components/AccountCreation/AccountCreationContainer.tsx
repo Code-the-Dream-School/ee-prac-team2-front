@@ -2,6 +2,7 @@
 // @ts-nocheck
 
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
+// import { includes } from "cypress/types/lodash";
 import React, { useState } from "react";
 
 import AccountCreation from "./AccountCreation";
@@ -15,12 +16,13 @@ const AccountCreationContainer = () => {
   const handleAccountCreate = async (name, email, password) => {
     try {
       const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/auth/signup",
+        `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify({
             name,
             email,

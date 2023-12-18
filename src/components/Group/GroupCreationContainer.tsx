@@ -14,23 +14,14 @@ const GroupCreationContainer = () => {
     newGroupId: null,
   });
 
-  const handleGroupCreation = async (groupData) => {
+  const handleGroupCreation = async (responseData) => {
     // Dummy API call (replace with actual API call)
     try {
-      const response = await fetch("https://api.example.com/create-group", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(groupData),
-      });
-
-      if (response.ok) {
+      if (responseData.status === 200) {
         // Set success result with the new group ID
-        const responseData = await response.json();
         setGroupCreationResult({
           isSuccess: true,
-          newGroupId: responseData.id,
+          newGroupId: responseData.data.newGroup._id,
         });
       } else {
         // Set error result

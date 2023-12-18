@@ -14,7 +14,7 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(
-          "https://dn-live-test.onrender.com/api/v1/users"
+          `${import.meta.env.VITE_BACKEND_URL}users`
         );
 
         if (response.ok) {
@@ -56,12 +56,13 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     try {
       console.log("Sending group creation request with data:", groupData);
       const response = await fetch(
-        "https://dn-live-test.onrender.com/api/v1/groups",
+        `${import.meta.env.VITE_BACKEND_URL}groups`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include",
           body: JSON.stringify(groupData),
         }
       );
