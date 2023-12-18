@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 
 import EventsDashboard from "./EventsDashboard";
 
-const EventsDashboardContainer = ({ eventsCount, setEventsCount, userID }) => {
+const EventsDashboardContainer = ({ setEventsCount, userID }) => {
   const [usersEvents, setUsersEvents] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsersEvents = async () => {
@@ -32,6 +33,7 @@ const EventsDashboardContainer = ({ eventsCount, setEventsCount, userID }) => {
 
         setUsersEvents(filteredEvents);
         setEventsCount(filteredEvents.length);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching activities:", error);
         if (axios.isAxiosError(error)) {
@@ -48,15 +50,7 @@ const EventsDashboardContainer = ({ eventsCount, setEventsCount, userID }) => {
     fetchUsersEvents();
   }, []);
 
-  return (
-    <div>
-      {usersEvents.length > 0 ? (
-        <EventsDashboard usersEvents={usersEvents} />
-      ) : (
-        <p>Loading...</p>
-      )}
-    </div>
-  );
+  return <EventsDashboard usersEvents={usersEvents} isLoading={isLoading} />;
 };
 
 export default EventsDashboardContainer;
