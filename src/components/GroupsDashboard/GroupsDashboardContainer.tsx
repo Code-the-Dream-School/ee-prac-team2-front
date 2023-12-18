@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 import GroupsDashboard from "./GroupsDashboard";
 
-const GroupsDashboardContainer = ({ setGroupCount }) => {
+const GroupsDashboardContainer = ({ setGroupCount, userID }) => {
   const [groups, setGroups] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -43,7 +43,9 @@ const GroupsDashboardContainer = ({ setGroupCount }) => {
     fetchGroups();
   }, []);
 
-  return <GroupsDashboard groups={groups} isLoading={isLoading} />;
+  return (
+    <GroupsDashboard groups={groups} isLoading={isLoading} userID={userID} />
+  );
 };
 
 export default GroupsDashboardContainer;

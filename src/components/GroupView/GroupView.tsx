@@ -4,15 +4,25 @@
 import EventsList from "@components/EventsList/EventsList";
 import MembersList from "@components/MembersList/MembersList";
 
-export default function GroupView() {
+export default function GroupView({ isLoading, group, isOwner, isMember }) {
   return (
     <div>
-      <h3>GroupView</h3>
-      <p>group details here</p>
-      <p>join/leave button</p>
-      <MembersList />
-      <EventsList />
-      <p>delete group button</p>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
+        <div>
+          <h2>{group.groupName}</h2>
+          <h3>{group.description}</h3>
+          {isMember ? (
+            <button>Leave group</button>
+          ) : (
+            <button>Join group</button>
+          )}
+          <MembersList />
+          <EventsList />
+          {isOwner ? <button>Delete group</button> : <button></button>}
+        </div>
+      )}
     </div>
   );
 }
