@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 export interface Voter {
   _id: string;
@@ -27,11 +27,8 @@ export interface Vote {
 }
 
 export interface Activity {
-  _id: number;
-  name: string;
-  description: string;
-  vote: Vote;
-  category: string;
+  activity: string;
+  type: string;
 }
 
 interface ActivitiesListProps {

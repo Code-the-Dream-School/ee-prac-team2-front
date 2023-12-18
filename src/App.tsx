@@ -1,5 +1,6 @@
 import AboutPage from "@components/AboutPage/AboutPage";
 import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
+import AddEventToGroupForm from "@components/AddEventToGroupForm/AddEventToGroupForm";
 import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import GroupCreationContainer from "@components/Group/GroupCreationContainer";
 import Footer from "@components/HomePage/Footer";
@@ -11,6 +12,8 @@ import ActivitiesListContainer from "@containers/ActivitiesContainer";
 import EventContainer from "@containers/EventContainer";
 import GroupContainer from "@containers/GroupContainer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import styles from "./App.module.css";
 
 const App = () => {
   return (
@@ -26,6 +29,7 @@ const App = () => {
         <Route path="/events/:id" element={<ViewSingleEventContainer />} />
         {/*TODO needs real path with group id */}
         <Route path="/group" Component={GroupContainer} />
+        <Route path="/events" Component={AddEventToGroupForm} />
         {/* TODO needs real path with group and event ids */}
         <Route path="/event" Component={EventContainer} />
         {/* New route for group creation */}
