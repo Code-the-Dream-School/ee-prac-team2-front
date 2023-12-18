@@ -2,34 +2,27 @@
 // @ts-nocheck
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Select from "react-select";
 
 const CreateGroupForm = ({ onCreateGroup }) => {
   const [groupName, setGroupName] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [users, setUsers] = useState([]);
   const [loadingUsers, setLoadingUsers] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      // Fetch users from the API and update the state
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}users`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-            withCredentials: true,
-          }
+        const response = await fetch(
+          `${import.meta.env.VITE_BACKEND_URL}users`
         );
 
-        if (response) {
-          const { users } = response.data;
+        if (response.ok) {
+          const { users } = await response.json();
           setUsers(users);
         } else {
-          console.error("Failed to fetch users:", response);
+          console.error("Failed to fetch users:", response.statusText);
         }
       } catch (error) {
         console.error("Error fetching registered users:", error);
@@ -41,27 +34,31 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     fetchUsers();
   }, []);
 
-  const handleCheckboxChange = (userId) => {
-    // Update the selected users when a checkbox is changed
-    const updatedUsers = selectedUsers.includes(userId)
-      ? selectedUsers.filter((id) => id !== userId)
-      : [...selectedUsers, userId];
+  const userOptions = users.map((user) => ({
+    value: user.email,
+    label: user.email,
+  }));
 
-    setSelectedUsers(updatedUsers);
+  const handleSelectChange = (selectedOptions) => {
+    const selectedUserEmails = selectedOptions.map((option) => option.value);
+    setSelectedUsers(selectedUserEmails);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    //API call
+    const groupData = {
+      groupName,
+      description,
+      memberEmails: selectedUsers,
+    };
+
     try {
-      // Make a request to create a new group with the form data
+      console.log("Sending group creation request with data:", groupData);
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}groups`,
-        {
-          groupName,
-          description,
-          memberEmails: [],
-        },
+        groupData,
         {
           headers: {
             "Content-Type": "application/json",
@@ -105,35 +102,12 @@ const CreateGroupForm = ({ onCreateGroup }) => {
         />
       </label>
       <div />
-      <label>
-        Category:
-        <input
-          required
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
-      </label>
-      <div />
       <div>
-        <h4>Select Group Owners:</h4>
+        <h4>Select Group Members:</h4>
         {loadingUsers ? (
           <p>Loading users...</p>
         ) : (
-          <div>
-            {users.map((user) => (
-              <div key={user._id}>
-                <input
-                  type="checkbox"
-                  id={user._id}
-                  value={user._id}
-                  checked={selectedUsers.includes(user._id)}
-                  onChange={() => handleCheckboxChange(user._id)}
-                />
-                <label htmlFor={user._id}>{user.name}</label>
-              </div>
-            ))}
-          </div>
+          <Select isMulti options={userOptions} onChange={handleSelectChange} />
         )}
       </div>
       <div />
