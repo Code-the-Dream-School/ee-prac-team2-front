@@ -2,7 +2,6 @@
 // @ts-nocheck
 
 // AccountCreation.tsx
-import React from "react";
 import theme from "@components/HomePage/theme";
 import {
   Box,
@@ -12,6 +11,7 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
+import React from "react";
 
 import AccountCreationContainer from "./AccountCreationContainer";
 

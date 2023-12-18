@@ -6,7 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
-import { ReactElement } from "react";
+import React, { ReactElement } from "react";
 
 export interface Voter {
   _id: string;
