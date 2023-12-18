@@ -10,7 +10,9 @@ const AddEventToGroupForm: React.FC = () => {
   const [eventDateTime, setEventDateTime] = useState<string>("");
   const [eventDescription, setEventDescription] = useState<string>("");
   const [eventActivities, setEventActivities] = useState<Activity[]>([]);
-  const [selectedActivities, setSelectedActivities] = useState<string[]>([]);
+  const [selectedActivities, setSelectedActivities] = useState<
+    { activity: string; type: string }[]
+  >([]);
 
   const handleDateTimeChange = (e: React.FormEvent<HTMLInputElement>) => {
     const selectedDateTime = e.currentTarget.value;
@@ -20,23 +22,24 @@ const AddEventToGroupForm: React.FC = () => {
 
   const handleCreateEvent = async () => {
     try {
-      const response = await fetch(eventEndpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
+      const response = await axios.post(
+        eventEndpoint,
+        {
           name: eventName,
-          groupID: "6577404f7559e6f996cdf3cd",
+          groupID: "657f6d3d73f35df49d8ffac2",
           eventDateTime: eventDateTime,
           activities: selectedActivities,
-        }),
-      });
-
-      console.log("Event created:", response);
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      console.log("Event created:", response.data.msg);
     } catch (error) {
-      console.error("Error creating event:", error);
+      console.error("Error creating event:", error.response.data.msg);
     }
   };
 
@@ -97,13 +100,26 @@ const AddEventToGroupForm: React.FC = () => {
             type="checkbox"
             id={`activity-${index}`}
             value={activity.activity}
-            checked={selectedActivities.includes(activity.activity)}
+            checked={selectedActivities.some(
+              (selected) =>
+                selected.activity === activity.activity &&
+                selected.type === activity.type
+            )}
             onChange={(e) => {
               if (e.target.checked) {
-                setSelectedActivities((prev) => [...prev, activity.activity]);
+                setSelectedActivities((prev) => [
+                  ...prev,
+                  { activity: activity.activity, type: activity.type },
+                ]);
               } else {
                 setSelectedActivities((prev) =>
-                  prev.filter((selected) => selected !== activity.activity)
+                  prev.filter(
+                    (selected) =>
+                      !(
+                        selected.activity === activity.activity &&
+                        selected.type === activity.type
+                      )
+                  )
                 );
               }
             }}
