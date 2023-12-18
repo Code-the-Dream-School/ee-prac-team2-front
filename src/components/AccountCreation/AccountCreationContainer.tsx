@@ -120,7 +120,6 @@ const AccountCreationContainer = () => {
           setPassword={setPassword}
           onCreateAccount={handleAccountCreate}
         />
-        <h2>Already have an account? Sign in here:</h2>
         <Login
           name={name}
           email={email}
