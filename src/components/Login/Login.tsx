@@ -84,7 +84,7 @@ const Login = ({ loginUser, onIsSignup }) => {
             </Button>
             <div>
               <Button sx={{ mt: 4 }} onClick={handleSwitch}>
-                Don't have an account? Sign up here.
+                {"Don't have an account? Sign up here."}
               </Button>
             </div>
           </form>
