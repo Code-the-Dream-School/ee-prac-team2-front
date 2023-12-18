@@ -1,4 +1,3 @@
-import AccountCreationContainer from "@components/AccountCreation/AccountCreationContainer";
 import theme from "@components/HomePage/theme";
 import {
   Box,
@@ -93,7 +92,6 @@ const Login = ({ loginUser, onIsSignup }) => {
       </Container>
     </ThemeProvider>
   );
-  l;
 };
 
 export default Login;

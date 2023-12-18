@@ -27,10 +27,6 @@ const App = () => {
         <Route path="/group" Component={GroupContainer} />
         {/* TODO needs real path with group and event ids */}
         <Route path="/event" Component={EventContainer} />
-        <Route
-          path="/account"
-          element={<AuthenticatedContent name={""} email={""} />}
-        />
       </Routes>
       <Footer />
     </BrowserRouter>
