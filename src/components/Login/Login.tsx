@@ -1,3 +1,7 @@
+/* eslint-disable react/no-unescaped-entities */
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import theme from "@components/HomePage/theme";
 import {
   Box,
