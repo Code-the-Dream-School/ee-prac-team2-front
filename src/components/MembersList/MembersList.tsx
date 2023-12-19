@@ -3,16 +3,15 @@
 
 import MembersListItem from "@components/MembersList/MembersListItem";
 
-export default function MembersList() {
+export default function MembersList({ members }) {
   return (
     <div>
-      <h4>MembersList</h4>
-      <p>Displays Groups&apos;s Members</p>
-      {/* use a mapped array here */}
-      <MembersListItem />
-      <MembersListItem />
-      <MembersListItem />
-      <MembersListItem />
+      <h4>Members:</h4>
+      <ul>
+        {members.map((member) => {
+          return <MembersListItem member={member} />;
+        })}
+      </ul>
     </div>
   );
 }
