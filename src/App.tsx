@@ -23,7 +23,6 @@ const App = () => {
         <Route path="/create-group" Component={GroupCreationContainer} />
         <Route path="/events" Component={AddEventToGroupForm} />
         <Route path="/events/:id" Component={EventContainer} />
-        <Route path="/events/:id" Component={EventContainer} />
         <Route path="/group" Component={GroupContainer} />
         <Route path="/groups/:id" Component={GroupContainer} />
         <Route path="/signup" Component={AccountCreationContainer} />
