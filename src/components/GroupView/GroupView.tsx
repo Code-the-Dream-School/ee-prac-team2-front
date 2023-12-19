@@ -23,7 +23,6 @@ export default function GroupView({ isLoading, group, isOwner, isMember }) {
             <h5>There are no members in this group.</h5>
           )}
           {isOwner && <button>Invite members</button>}
-
           {isMember && <button>Leave group</button>}
           {!isMember && !isOwner && <button>Join group</button>}
           {group.groupEvents.length > 0 ? (
@@ -31,7 +30,6 @@ export default function GroupView({ isLoading, group, isOwner, isMember }) {
           ) : (
             <h5>There are no upcoming events for this group.</h5>
           )}
-
           <Link to="/events/" state={{ groupID: group._id }}>
             <button>Create an event for this group</button>
           </Link>
