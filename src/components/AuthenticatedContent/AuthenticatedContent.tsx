@@ -9,6 +9,7 @@ import {
   Box,
   Button,
   Container,
+  Divider,
   ThemeProvider,
   Typography,
 } from "@mui/material";
@@ -31,18 +32,17 @@ const AuthenticatedContent = () => {
   }, []);
 
   if (!user) {
-    return <h1>User not found. Please sign in.</h1>;
+    return (
+      <Typography color="warning" variant="h1">
+        User not found. Please sign in.
+      </Typography>
+    );
   }
 
   return (
     <ThemeProvider theme={theme}>
-      <Container sx={{ height: "100vh" }}>
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="100vh"
-        >
+      <Container>
+        <Box display="flex" justifyContent="center" minHeight="100vh" mt={8}>
           <div>
             <Typography
               gutterBottom
@@ -52,13 +52,15 @@ const AuthenticatedContent = () => {
             >
               Welcome to your Dashboard, {user.name}
             </Typography>
-            <Typography gutterBottom variant="h6">
-              Email: {user.email}
+            <Divider />
+            <Typography gutterBottom variant="body2" align="right">
+              [ Email: {user.email} ]
             </Typography>
             <Typography
               variant="h4"
               component="h3"
               fontFamily="Just Another Hand"
+              mt={4}
             >
               Your upcoming events:
             </Typography>
@@ -79,6 +81,7 @@ const AuthenticatedContent = () => {
               variant="h4"
               component="h3"
               fontFamily="Just Another Hand"
+              mt={4}
             >
               Your groups:
             </Typography>
@@ -93,11 +96,9 @@ const AuthenticatedContent = () => {
                 userID={user.userID}
               />
             )}
-            <Link to={"/create-group"}>
-              <Button variant="contained" startIcon={<GroupAddTwoTone />}>
-                Add a group
-              </Button>
-            </Link>
+            <Button variant="contained" startIcon={<GroupAddTwoTone />}>
+              <Link to={"/create-group"}>Add a group</Link>
+            </Button>
           </div>
         </Box>
       </Container>

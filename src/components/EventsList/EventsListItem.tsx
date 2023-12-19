@@ -1,15 +1,21 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
+import { CalendarTodayTwoTone } from "@mui/icons-material";
+import { Avatar, ListItem, ListItemAvatar, ListItemText } from "@mui/material";
 import { Link } from "react-router-dom";
 
 export default function EventsListItem({ event }) {
   return (
-    <li>
+    <ListItem>
+      <ListItemAvatar>
+        <Avatar>
+          <CalendarTodayTwoTone />
+        </Avatar>
+      </ListItemAvatar>
       <Link to={`/events/${event._id}`}>
-        <h5>{event.name}</h5>
-        <h6>{event.description}</h6>
+        <ListItemText primary={event.name} secondary={event.description} />
       </Link>
-    </li>
+    </ListItem>
   );
 }
