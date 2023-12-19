@@ -15,6 +15,7 @@ const AuthenticatedContent = () => {
 
   const user = state?.user;
 
+
   useEffect(() => {
     if (!user) {
       navigate("/signup");
