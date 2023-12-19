@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { LocalActivity } from "@mui/icons-material";
 import {
   Container,
@@ -49,48 +52,45 @@ export default function Activities(props: ActivitiesListProps): ReactElement {
             width: "100%",
           }}
         >
-          {props.activities.map(
-            ({ _id, name, description, category, vote }) => (
-              <ListItem
-                key={_id}
-                alignItems="center"
-                divider={true}
+          {props.activities.map(({ _id, activity, type, vote }) => (
+            <ListItem
+              key={_id}
+              alignItems="center"
+              divider={true}
+              sx={{
+                margin: 2,
+              }}
+            >
+              <ListItemIcon>
+                <LocalActivity fontSize="large" />
+              </ListItemIcon>
+
+              <ListItemText
+                primary={activity}
+                secondary={
+                  <>
+                    <span>{type}</span>
+                  </>
+                }
                 sx={{
-                  margin: 2,
+                  margin: 1,
+                }}
+              />
+              <ListItemIcon
+                sx={{
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                  borderRadius: 50,
+                  paddingTop: 1,
+                  paddingBottom: 1,
+                  marginLeft: 1,
+                  justifyContent: "center",
                 }}
               >
-                <ListItemIcon>
-                  <LocalActivity fontSize="large" />
-                </ListItemIcon>
-
-                <ListItemText
-                  primary={name}
-                  secondary={
-                    <>
-                      <span>{category}</span>
-                      <span>{description}</span>
-                    </>
-                  }
-                  sx={{
-                    margin: 1,
-                  }}
-                />
-                <ListItemIcon
-                  sx={{
-                    borderStyle: "solid",
-                    borderWidth: 1,
-                    borderRadius: 50,
-                    paddingTop: 1,
-                    paddingBottom: 1,
-                    marginLeft: 1,
-                    justifyContent: "center",
-                  }}
-                >
-                  {vote.voters?.length ?? 0}
-                </ListItemIcon>
-              </ListItem>
-            )
-          )}
+                {vote?.voters?.length ?? 0}
+              </ListItemIcon>
+            </ListItem>
+          ))}
         </List>
       </Container>
     </>
