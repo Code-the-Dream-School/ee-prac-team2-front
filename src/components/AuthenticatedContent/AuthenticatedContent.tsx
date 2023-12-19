@@ -27,50 +27,69 @@ const AuthenticatedContent = () => {
   return (
     <ThemeProvider theme={theme}>
       <Container sx={{ height: "100vh" }}>
-        <Typography variant="h2" component="h2" fontFamily="Just Another Hand">
-          Welcome to your Dashboard, {user.name}
-        </Typography>
-        <Typography variant="h6">Email: {user.email}</Typography>
-
-        <div>
-          <Typography variant="h5" component="h3">
-            Your upcoming events:
-          </Typography>
-          {eventsCount === 0 ? (
-            <Typography variant="body1" component="p">
-              You currently do not have any upcoming events. Create a group
-              below or click on an existing group to create an event.
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+        >
+          <div>
+            <Typography
+              gutterBottom
+              variant="h4"
+              component="h2"
+              fontFamily="Pacifico"
+            >
+              Welcome to your Dashboard, {user.name}
             </Typography>
-          ) : (
-            <EventsDashboardContainer
-              eventsCount={eventsCount}
-              setEventsCount={setEventsCount}
-              userID={user.userID}
-            />
-          )}
-        </div>
-
-        <Box>
-          <Typography variant="h5" component="h3">
-            Your groups:
-          </Typography>
-          {groupCount === 0 ? (
-            <Typography variant="body1" component="p">
-              You currently do not belong to any groups.
+            <Typography gutterBottom variant="h6">
+              Email: {user.email}
             </Typography>
-          ) : (
-            <GroupsDashboardContainer
-              groupCount={groupCount}
-              setGroupCount={setGroupCount}
-              userID={user.userID}
-            />
-          )}
+            <Typography
+              variant="h4"
+              component="h3"
+              fontFamily="Just Another Hand"
+            >
+              Your upcoming events:
+            </Typography>
+            {eventsCount === 0 ? (
+              <Typography variant="body1" component="p">
+                You currently do not have any upcoming events. Create a group
+                below or click on an existing group to create an event.
+              </Typography>
+            ) : (
+              <EventsDashboardContainer
+                eventsCount={eventsCount}
+                setEventsCount={setEventsCount}
+                userID={user.userID}
+              />
+            )}
+
+            <Typography
+              variant="h4"
+              component="h3"
+              fontFamily="Just Another Hand"
+            >
+              Your groups:
+            </Typography>
+            {groupCount === 0 ? (
+              <Typography variant="body1" component="p">
+                You currently do not belong to any groups.
+              </Typography>
+            ) : (
+              <GroupsDashboardContainer
+                groupCount={groupCount}
+                setGroupCount={setGroupCount}
+                userID={user.userID}
+              />
+            )}
+            <Link to={"/create-group"}>
+              <Button variant="contained" startIcon={<GroupAddTwoTone />}>
+                Add a group
+              </Button>
+            </Link>
+          </div>
         </Box>
-        <Link to={"/create-group"}>
-          <Button variant="contained" startIcon={<GroupAddTwoTone />}>
-            Add a group
-          </Button>
-        </Link>
       </Container>
     </ThemeProvider>
   );

@@ -1,7 +1,13 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import theme from "@components/HomePage/theme";
-import { Box, Container, ThemeProvider, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  TextField,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
@@ -99,6 +105,9 @@ const CreateGroupForm = ({ onCreateGroup }) => {
           >
             Create a New Group
           </Typography>
+          <div>
+            <TextField />
+          </div>
           <label>
             Group Name:
             <input

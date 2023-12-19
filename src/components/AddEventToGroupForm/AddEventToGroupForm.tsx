@@ -2,12 +2,18 @@
 // @ts-nocheck
 
 import { Activity } from "@components/ActivitiesList/ActivitiesList";
+import theme from "@components/HomePage/theme";
 import {
+  Box,
+  Button,
   Checkbox,
+  Container,
   FormControlLabel,
   FormGroup,
   FormLabel,
   TextField,
+  ThemeProvider,
+  Typography,
 } from "@mui/material";
 import axios, { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
@@ -105,82 +111,114 @@ const AddEventToGroupForm: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      {formSubmitted === null ? (
-        <div>
-          <h2>Create Event</h2>
-          <TextField
-            id="event-name"
-            type="text"
-            label="Event Name:"
-            value={eventName}
-            onChange={(e) => setEventName(e.target.value)}
-          />
-          <br />
-          <TextField
-            id="event-date"
-            type="datetime-local"
-            label="Event Date and Time:"
-            defaultValue={eventDateTime.substring(0, 16)}
-            onChange={handleDateTimeChange}
-          />
-          <br />
-          <TextField
-            id="event-description"
-            type="text"
-            label="Event description:"
-            value={eventDescription}
-            onChange={(e) => setEventDescription(e.target.value)}
-          />
-          <br />
-          <FormLabel component="legend">Event Activities:</FormLabel>
-          <FormGroup>
-            {eventActivities.map((activity, index) => (
-              <FormControlLabel
-                key={`activity-${index}`}
-                control={
-                  <Checkbox
-                    checked={selectedActivities.some(
-                      (selected) =>
-                        selected.activity === activity.activity &&
-                        selected.type === activity.type
-                    )}
-                    name={activity.activity}
-                    onChange={(e) => {
-                      if (e.target.checked) {
-                        setSelectedActivities((prev) => [
-                          ...prev,
-                          { activity: activity.activity, type: activity.type },
-                        ]);
-                      } else {
-                        setSelectedActivities((prev) =>
-                          prev.filter(
+    <ThemeProvider theme={theme}>
+      <Container>
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          minHeight="100vh"
+        >
+          {formSubmitted === null ? (
+            <div>
+              <Typography
+                gutterBottom
+                variant="h3"
+                component="h3"
+                fontFamily="Pacifico"
+              >
+                Create Event
+              </Typography>
+              <div>
+                <TextField
+                  fullWidth
+                  id="event-name"
+                  type="text"
+                  label="Event Name"
+                  margin="normal"
+                  defaultValue={eventName}
+                  onChange={(e) => setEventName(e.target.value)}
+                />
+              </div>
+              <div>
+                <TextField
+                  fullWidth
+                  id="event-date"
+                  type="datetime-local"
+                  label="Event Date and Time"
+                  margin="normal"
+                  defaultValue={eventDateTime.substring(0, 16)}
+                  onChange={handleDateTimeChange}
+                />
+              </div>
+              <div>
+                <TextField
+                  multiline
+                  fullWidth
+                  id="event-description"
+                  type="text"
+                  label="Event description"
+                  margin="normal"
+                  defaultValue={eventDescription}
+                  onChange={(e) => setEventDescription(e.target.value)}
+                />
+              </div>
+              <div style={{ marginTop: "12px" }}>
+                <FormLabel component="legend">Event Activities</FormLabel>
+                <FormGroup>
+                  {eventActivities.map((activity, index) => (
+                    <FormControlLabel
+                      key={`activity-${index}`}
+                      control={
+                        <Checkbox
+                          checked={selectedActivities.some(
                             (selected) =>
-                              !(
-                                selected.activity === activity.activity &&
-                                selected.type === activity.type
-                              )
-                          )
-                        );
+                              selected.activity === activity.activity &&
+                              selected.type === activity.type
+                          )}
+                          name={activity.activity}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setSelectedActivities((prev) => [
+                                ...prev,
+                                {
+                                  activity: activity.activity,
+                                  type: activity.type,
+                                },
+                              ]);
+                            } else {
+                              setSelectedActivities((prev) =>
+                                prev.filter(
+                                  (selected) =>
+                                    !(
+                                      selected.activity === activity.activity &&
+                                      selected.type === activity.type
+                                    )
+                                )
+                              );
+                            }
+                          }}
+                        />
                       }
-                    }}
-                  />
-                }
-                label={activity.activity}
-              />
-            ))}
-          </FormGroup>
-          <br />
-          <button onClick={handleCreateEvent}>Create Event</button>
-        </div>
-      ) : (
-        <EventStatus
-          isSuccess={formSubmitted.isSuccess}
-          message={formSubmitted.message}
-          onAddMoreEvents={handleAddMoreEvents}
-        />
-      )}
-    </div>
+                      label={activity.activity}
+                    />
+                  ))}
+                </FormGroup>
+              </div>
+              <Button variant="contained" onClick={handleCreateEvent}>
+                Create Event
+              </Button>
+            </div>
+          ) : (
+            <EventStatus
+              isSuccess={formSubmitted.isSuccess}
+              message={formSubmitted.message}
+              onAddMoreEvents={handleAddMoreEvents}
+            />
+          )}
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 };
 
