@@ -43,6 +43,7 @@ const AuthenticatedContent = () => {
           <GroupsDashboardContainer
             groupCount={groupCount}
             setGroupCount={setGroupCount}
+            userID={user.userID}
           />
         )}
       </div>

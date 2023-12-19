@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import axios, { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import EventStatus from "./EventStatus";
 
@@ -30,6 +31,10 @@ const AddEventToGroupForm: React.FC = () => {
     message: string;
   } | null>(null);
 
+  const location = useLocation();
+  const groupID = location.state?.groupID;
+  console.log(groupID);
+
   const handleDateTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDateTime = e.currentTarget.value;
     const isoDateTime = new Date(selectedDateTime).toISOString();
@@ -42,7 +47,7 @@ const AddEventToGroupForm: React.FC = () => {
         eventEndpoint,
         {
           name: eventName,
-          groupID: "657d0f422cb49ec9046b3b8c",
+          groupID,
           eventDateTime: eventDateTime,
           activities: selectedActivities,
         },
