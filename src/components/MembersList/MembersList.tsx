@@ -9,7 +9,7 @@ export default function MembersList({ members }) {
       <h4>Members:</h4>
       <ul>
         {members.map((member) => {
-          return <MembersListItem member={member} />;
+          return <MembersListItem key={member._id} member={member} />;
         })}
       </ul>
     </div>
