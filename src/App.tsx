@@ -29,7 +29,7 @@ const App = () => {
         <Route path="/events/:id" element={<ViewSingleEventContainer />} />
         {/*TODO needs real path with group id */}
         <Route path="/group" Component={GroupContainer} />
-        <Route path="/events" Component={AddEventToGroupForm} />
+        <Route path="/create-event" Component={AddEventToGroupForm} />
         {/* TODO needs real path with group and event ids */}
         <Route path="/event" Component={EventContainer} />
         {/* New route for group creation */}

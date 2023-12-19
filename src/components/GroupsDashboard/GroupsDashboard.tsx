@@ -13,7 +13,7 @@ const GroupsDashboard = ({ groups, isLoading }) => {
           {groups.map((group) => {
             return (
               <li key={group._id}>
-                <Link to={"/groups/:id"}>{group.groupName}</Link>
+                <Link to={`/groups/${group._id}`}>{group.groupName}</Link>
               </li>
             );
           })}
