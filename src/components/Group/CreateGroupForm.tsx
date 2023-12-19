@@ -3,6 +3,8 @@
 import theme from "@components/HomePage/theme";
 import {
   Box,
+  Button,
+  CircularProgress,
   Container,
   TextField,
   ThemeProvider,
@@ -97,51 +99,60 @@ const CreateGroupForm = ({ onCreateGroup }) => {
   return (
     <ThemeProvider theme={theme}>
       <Container>
-        <form onSubmit={handleSubmit}>
-          <Typography
-            variant="h2"
-            component="h2"
-            fontFamily="Just Another Hand"
-          >
-            Create a New Group
-          </Typography>
-          <div>
-            <TextField />
-          </div>
-          <label>
-            Group Name:
-            <input
-              required
-              type="text"
-              value={groupName}
-              onChange={(e) => setGroupName(e.target.value)}
-            />
-          </label>
-          <div />
-          <label>
-            Description:
-            <textarea
-              required
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </label>
-          <div />
-          <div>
-            <h4>Select Group Members:</h4>
-            {loadingUsers ? (
-              <p>Loading users...</p>
-            ) : (
-              <Select
-                isMulti
-                options={userOptions}
-                onChange={handleSelectChange}
+        <Box display="flex" justifyContent="center" minHeight="100vh" mt={8}>
+          <form onSubmit={handleSubmit}>
+            <Typography
+              variant="h2"
+              component="h2"
+              fontFamily="Just Another Hand"
+            >
+              Create a New Group
+            </Typography>
+            <div>
+              <TextField
+                required
+                fullWidth
+                label="Group Name"
+                margin="normal"
+                defaultValue={groupName}
+                onChange={(e) => setGroupName(e.target.value)}
               />
-            )}
-          </div>
-          <div />
-          <button type="submit">Create Group</button>
-        </form>
+            </div>
+
+            <div>
+              <TextField
+                required
+                fullWidth
+                multiline
+                label="Description"
+                margin="normal"
+                defaultValue={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+
+            <div>
+              <Typography gutterBottom variant="inherit">
+                Select Group Members
+              </Typography>
+              {loadingUsers ? (
+                <Box sx={{ display: "flex", height: "100vh" }}>
+                  <CircularProgress color="secondary" />
+                </Box>
+              ) : (
+                <Select
+                  isMulti
+                  options={userOptions}
+                  onChange={handleSelectChange}
+                />
+              )}
+            </div>
+
+            <Button variant="contained" type="submit" sx={{ mt: 4 }}>
+              Create Group
+            </Button>
+          </form>
+        </Box>
       </Container>
     </ThemeProvider>
   );
