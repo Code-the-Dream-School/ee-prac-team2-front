@@ -29,7 +29,7 @@ const EventsDashboard = ({ usersEvents, isLoading }) => {
                     <ListItemIcon>
                       <EventTwoTone color="info" />
                     </ListItemIcon>
-                    <Link to={"/events/:id"}>{event.name}</Link>
+                    <Link to={`/events/${event._id}`}>{event.name}</Link>
                   </ListItemButton>
                 </ListItem>
               );

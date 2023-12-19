@@ -12,17 +12,27 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const AuthenticatedContent = () => {
   const [groupCount, setGroupCount] = useState(null);
   const [eventsCount, setEventsCount] = useState(null);
-
+  const navigate = useNavigate();
   const location = useLocation();
   const { state } = location;
 
-  const user = state && state.user;
+  const user = state?.user;
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/signup");
+    }
+  }, []);
+
+  if (!user) {
+    return <h1>User not found. Please sign in.</h1>;
+  }
 
   return (
     <ThemeProvider theme={theme}>

@@ -6,6 +6,7 @@ import theme from "@components/HomePage/theme";
 import MembersList from "@components/MembersList/MembersList";
 import {
   EditCalendarTwoTone,
+  GroupAddTwoTone,
   GroupRemoveTwoTone,
   LoginTwoTone,
   LogoutTwoTone,
@@ -41,15 +42,35 @@ export default function GroupView({ isLoading, group, isOwner, isMember }) {
               <Typography variant="h5" component="p">
                 {group.description}
               </Typography>
+              <Typography variant="h6" component="h4">
+                Group Owner: {group.owner.name} ({group.owner.email})
+              </Typography>
 
-              <MembersList />
+              {group.members.length > 0 ? (
+                <MembersList members={group.members} />
+              ) : (
+                <Typography variant="h6" component="h4">
+                  There are no members in this group.
+                </Typography>
+              )}
+
+              {isOwner && (
+                <Button
+                  variant="contained"
+                  color="info"
+                  startIcon={<GroupAddTwoTone />}
+                >
+                  Invite members
+                </Button>
+              )}
+
               {isMember && (
                 <Button
                   variant="contained"
                   color="info"
                   startIcon={<LogoutTwoTone />}
                 >
-                  Leave group
+                  Leave Group
                 </Button>
               )}
               {!isMember && !isOwner && (
@@ -58,10 +79,17 @@ export default function GroupView({ isLoading, group, isOwner, isMember }) {
                   color="info"
                   startIcon={<LoginTwoTone />}
                 >
-                  Join group
+                  Join Group
                 </Button>
               )}
-              <EventsList />
+              {group.groupEvents.length > 0 ? (
+                <EventsList events={group.groupEvents} />
+              ) : (
+                <Typography variant="h6" component="h4">
+                  There are no upcoming events for this group.
+                </Typography>
+              )}
+
               <Button
                 variant="contained"
                 color="secondary"

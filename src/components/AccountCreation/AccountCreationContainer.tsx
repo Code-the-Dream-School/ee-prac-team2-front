@@ -23,7 +23,7 @@ const AccountCreationContainer = () => {
   const handleAccountCreate = async (name, email, password) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}auth/login`,
+        `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
         {
           method: "POST",
           headers: {

@@ -20,6 +20,7 @@ const App = () => {
         <Route path="/about" Component={AboutPage} />
         <Route path="/account" Component={AuthenticatedContent} />
         <Route path="/activities" Component={ActivitiesListContainer} />
+        <Route path="/create-event" Component={AddEventToGroupForm} />
         <Route path="/create-group" Component={GroupCreationContainer} />
         <Route path="/events" Component={AddEventToGroupForm} />
         <Route path="/events/:id" Component={EventContainer} />
