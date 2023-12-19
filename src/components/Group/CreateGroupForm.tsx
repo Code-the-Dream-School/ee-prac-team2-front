@@ -15,9 +15,15 @@ const CreateGroupForm = ({ onCreateGroup }) => {
     const fetchUsers = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_BACKEND_URL}users`
+          `${import.meta.env.VITE_BACKEND_URL}users`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+          }
         );
-
         if (response.ok) {
           const { users } = await response.json();
           setUsers(users);
