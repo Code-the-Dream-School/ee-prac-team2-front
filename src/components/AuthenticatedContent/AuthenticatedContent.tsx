@@ -4,8 +4,14 @@
 import EventsDashboardContainer from "@components/EventsDashboard/EventsDashboardContainer";
 import GroupsDashboardContainer from "@components/GroupsDashboard/GroupsDashboardContainer";
 import theme from "@components/HomePage/theme";
-import { Group, GroupAddTwoTone } from "@mui/icons-material";
-import { Box, Container, ThemeProvider, Typography } from "@mui/material";
+import { GroupAddTwoTone } from "@mui/icons-material";
+import {
+  Box,
+  Button,
+  Container,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -61,7 +67,9 @@ const AuthenticatedContent = () => {
           )}
         </Box>
         <Link to={"/create-group"}>
-          <GroupAddTwoTone fontSize="large" />
+          <Button variant="contained" startIcon={<GroupAddTwoTone />}>
+            Add a group
+          </Button>
         </Link>
       </Container>
     </ThemeProvider>
