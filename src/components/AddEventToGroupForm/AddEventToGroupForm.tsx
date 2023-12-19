@@ -47,8 +47,10 @@ const AddEventToGroupForm: React.FC = () => {
         eventEndpoint,
         {
           name: eventName,
-          groupID,
+          // TODO make group id dynamic
+          groupID: "657d0f422cb49ec9046b3b8c",
           eventDateTime: eventDateTime,
+          description: eventDescription,
           activities: selectedActivities,
         },
         {
