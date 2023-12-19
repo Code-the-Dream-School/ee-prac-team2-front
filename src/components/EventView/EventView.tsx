@@ -1,8 +1,8 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import EventVotingWindow from "@components/EventVotingWindow/EventVotingWindow";
-import VotableActivitiesList from "@components/VotableActivitiesList/VotableActivitiesList";
+// import EventVotingWindow from "@components/EventVotingWindow/EventVotingWindow";
+// import VotableActivitiesList from "@components/VotableActivitiesList/VotableActivitiesList";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

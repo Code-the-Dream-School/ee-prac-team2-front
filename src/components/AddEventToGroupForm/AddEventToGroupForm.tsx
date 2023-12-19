@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+
 import { Activity } from "@components/ActivitiesList/ActivitiesList";
 import {
   Checkbox,
@@ -8,6 +11,7 @@ import {
 } from "@mui/material";
 import axios, { AxiosError } from "axios";
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import EventStatus from "./EventStatus";
 
@@ -27,6 +31,10 @@ const AddEventToGroupForm: React.FC = () => {
     message: string;
   } | null>(null);
 
+  const location = useLocation();
+  const groupID = location.state?.groupID;
+  console.log(groupID);
+
   const handleDateTimeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedDateTime = e.currentTarget.value;
     const isoDateTime = new Date(selectedDateTime).toISOString();
@@ -39,6 +47,7 @@ const AddEventToGroupForm: React.FC = () => {
         eventEndpoint,
         {
           name: eventName,
+          // TODO make group id dynamic
           groupID: "657c8b290b2e8d9bab16179c",
           eventDateTime: eventDateTime,
           activities: selectedActivities,

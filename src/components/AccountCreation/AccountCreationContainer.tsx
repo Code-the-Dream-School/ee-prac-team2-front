@@ -1,9 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-import AuthenticatedContent from "@components/AuthenticatedContent/AuthenticatedContent";
 import Login from "@components/Login/Login";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +23,7 @@ const AccountCreationContainer = () => {
   const handleAccountCreate = async (name, email, password) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_BACKEND_URL}auth/login`,
+        `${import.meta.env.VITE_BACKEND_URL}auth/signup`,
         {
           method: "POST",
           headers: {

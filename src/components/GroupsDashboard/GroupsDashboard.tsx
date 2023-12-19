@@ -3,7 +3,7 @@
 
 import { Link } from "react-router-dom";
 
-const GroupsDashboard = ({ groups, isLoading }) => {
+const GroupsDashboard = ({ groups, isLoading, userID }) => {
   return (
     <div>
       {isLoading ? (
@@ -13,7 +13,9 @@ const GroupsDashboard = ({ groups, isLoading }) => {
           {groups.map((group) => {
             return (
               <li key={group._id}>
-                <Link to={`/groups/${group._id}`}>{group.groupName}</Link>
+                <Link to={`/groups/${group._id}`} state={{ userID }}>
+                  {group.groupName}
+                </Link>
               </li>
             );
           })}

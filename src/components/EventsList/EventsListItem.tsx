@@ -3,12 +3,13 @@
 
 import { Link } from "react-router-dom";
 
-export default function EventsListItem() {
+export default function EventsListItem({ event }) {
   return (
-    <div>
-      <h5>EventsListItem</h5>
-      <p>Event summary</p>
-      <Link to={"/event"}>View Event</Link>
-    </div>
+    <li>
+      <Link to={`/events/${event._id}`}>
+        <h5>{event.name}</h5>
+        <h6>{event.description}</h6>
+      </Link>
+    </li>
   );
 }

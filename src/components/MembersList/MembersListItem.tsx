@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 
-export default function MembersListItem() {
+export default function MembersListItem({ member }) {
   return (
-    <div>
-      <h5>MembersListItem</h5>
-      <p>User summary</p>
-    </div>
+    <li>
+      <h5>{member.name}</h5>
+      <h6>{member.email}</h6>
+    </li>
   );
 }

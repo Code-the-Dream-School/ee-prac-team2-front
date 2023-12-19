@@ -43,13 +43,10 @@ const AuthenticatedContent = () => {
           <GroupsDashboardContainer
             groupCount={groupCount}
             setGroupCount={setGroupCount}
+            userID={user.userID}
           />
         )}
       </div>
-
-      {/* <button onClick={() => (window.location.href = "/create-group")}>
-        Create Group
-      </button> */}
       <Link to={"/create-group"}>Create Group</Link>
     </div>
   );
