@@ -207,7 +207,11 @@ const AddEventToGroupForm: React.FC = () => {
                   ))}
                 </FormGroup>
               </div>
-              <Button variant="contained" onClick={handleCreateEvent}>
+              <Button
+                variant="contained"
+                sx={{ mt: 4 }}
+                onClick={handleCreateEvent}
+              >
                 Create Event
               </Button>
             </div>
