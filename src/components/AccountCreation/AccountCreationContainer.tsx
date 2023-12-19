@@ -2,7 +2,6 @@
 // @ts-nocheck
 
 import Login from "@components/Login/Login";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
