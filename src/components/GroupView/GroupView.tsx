@@ -14,15 +14,22 @@ export default function GroupView({ isLoading, group, isOwner, isMember }) {
         <div>
           <h2>{group.groupName}</h2>
           <h3>{group.description}</h3>
-
           <h4>
             Group Owner: {group.owner.name} ({group.owner.email})
           </h4>
-          <MembersList members={group.members} />
-
+          {group.members.length > 0 ? (
+            <MembersList members={group.members} />
+          ) : (
+            <h5>There are no members in this group.</h5>
+          )}
+          {isOwner && <button>Invite members</button>}
           {isMember && <button>Leave group</button>}
           {!isMember && !isOwner && <button>Join group</button>}
-          <EventsList />
+          {group.groupEvents.length > 0 ? (
+            <EventsList events={group.groupEvents} />
+          ) : (
+            <h5>There are no upcoming events for this group.</h5>
+          )}
           <Link to="/events/" state={{ groupID: group._id }}>
             <button>Create an event for this group</button>
           </Link>
