@@ -13,8 +13,6 @@ import {
 } from "@mui/material";
 import React from "react";
 
-import AccountCreationContainer from "./AccountCreationContainer";
-
 const AccountCreation = ({
   onCreateAccount,
   name,

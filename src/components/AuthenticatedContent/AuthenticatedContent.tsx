@@ -47,10 +47,6 @@ const AuthenticatedContent = () => {
           />
         )}
       </div>
-
-      {/* <button onClick={() => (window.location.href = "/create-group")}>
-        Create Group
-      </button> */}
       <Link to={"/create-group"}>Create Group</Link>
     </div>
   );
