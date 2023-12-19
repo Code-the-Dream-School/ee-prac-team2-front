@@ -26,9 +26,14 @@ export interface Vote {
   __v: number;
 }
 
-export interface Activity {
+export type Activity = {
+  _id: string;
   activity: string;
   type: string;
+};
+
+export interface EventActivity extends Activity {
+  vote: Vote;
 }
 
 interface ActivitiesListProps {
