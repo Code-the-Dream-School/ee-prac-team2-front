@@ -13,7 +13,7 @@ const EventsDashboard = ({ usersEvents, isLoading }) => {
           {usersEvents.map((event) => {
             return (
               <li key={event._id}>
-                <Link to={"/events/:id"}>{event.name}</Link>
+                <Link to={`/events/${event._id}`}>{event.name}</Link>
               </li>
             );
           })}
