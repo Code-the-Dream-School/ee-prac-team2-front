@@ -27,7 +27,9 @@ export default function NavBar() {
               aria-label="logo"
               sx={{ mr: 2 }}
             >
-              <Avatar src={logoIcon} />
+              <Link to="/">
+                <Avatar src={logoIcon} />
+              </Link>
             </IconButton>
             <Typography
               variant="h6"
