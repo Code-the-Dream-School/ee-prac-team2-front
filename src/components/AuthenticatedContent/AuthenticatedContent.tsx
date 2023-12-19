@@ -13,7 +13,12 @@ const AuthenticatedContent = () => {
   const location = useLocation();
   const { state } = location;
 
-  const user = state && state.user;
+  const user = state?.user;
+
+  if (!user) {
+    return <h1>User not found. Please sign in.</h1>;
+  }
+  console.log(user);
 
   return (
     <div>

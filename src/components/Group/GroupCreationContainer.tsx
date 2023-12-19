@@ -11,12 +11,12 @@ const GroupCreationContainer = () => {
   const [isCreateButtonClicked, setCreateButtonClicked] = useState(false);
   const [newGroupId, setNewGroupId] = useState(null); // State to hold the newGroupId
 
-  const handleGroupCreation = async (responseData) => {
+  const handleGroupCreation = async (createdGroupId) => {
     // Dummy API call (replace with actual API call)
     try {
-      if (responseData.status === 200) {
+      if (createdGroupId) {
         // Set the new group ID in the state
-        setNewGroupId(responseData.data.newGroup._id);
+        setNewGroupId(createdGroupId);
       }
     } catch (error) {
       // Handle errors if needed
