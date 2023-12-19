@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import theme from "@components/HomePage/theme";
+import { Box, Container, ThemeProvider, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "react-select";
@@ -87,38 +89,52 @@ const CreateGroupForm = ({ onCreateGroup }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Create a New Group</h2>
-      <label>
-        Group Name:
-        <input
-          required
-          type="text"
-          value={groupName}
-          onChange={(e) => setGroupName(e.target.value)}
-        />
-      </label>
-      <div />
-      <label>
-        Description:
-        <textarea
-          required
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-      </label>
-      <div />
-      <div>
-        <h4>Select Group Members:</h4>
-        {loadingUsers ? (
-          <p>Loading users...</p>
-        ) : (
-          <Select isMulti options={userOptions} onChange={handleSelectChange} />
-        )}
-      </div>
-      <div />
-      <button type="submit">Create Group</button>
-    </form>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <form onSubmit={handleSubmit}>
+          <Typography
+            variant="h2"
+            component="h2"
+            fontFamily="Just Another Hand"
+          >
+            Create a New Group
+          </Typography>
+          <label>
+            Group Name:
+            <input
+              required
+              type="text"
+              value={groupName}
+              onChange={(e) => setGroupName(e.target.value)}
+            />
+          </label>
+          <div />
+          <label>
+            Description:
+            <textarea
+              required
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </label>
+          <div />
+          <div>
+            <h4>Select Group Members:</h4>
+            {loadingUsers ? (
+              <p>Loading users...</p>
+            ) : (
+              <Select
+                isMulti
+                options={userOptions}
+                onChange={handleSelectChange}
+              />
+            )}
+          </div>
+          <div />
+          <button type="submit">Create Group</button>
+        </form>
+      </Container>
+    </ThemeProvider>
   );
 };
 
