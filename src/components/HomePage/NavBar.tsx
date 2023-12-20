@@ -1,4 +1,8 @@
-import { AccountCircleTwoTone } from "@mui/icons-material";
+import {
+  AccountCircleTwoTone,
+  LogoutTwoTone,
+  SettingsTwoTone,
+} from "@mui/icons-material";
 import {
   AppBar,
   Avatar,
@@ -14,7 +18,7 @@ import { Link } from "react-router-dom";
 import logoIcon from "./media/logo.png";
 import theme from "./theme";
 
-export default function NavBar() {
+export default function NavBar({ isLoggedIn }) {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1 }}>
@@ -42,14 +46,36 @@ export default function NavBar() {
             <Button color="inherit">
               <Link to="/about">About</Link>
             </Button>
-            <Button
-              variant="outlined"
-              color="inherit"
-              endIcon={<AccountCircleTwoTone />}
-              sx={{ ml: 4 }}
-            >
-              <Link to="/signup">Login</Link>
-            </Button>
+
+            {isLoggedIn ? (
+              <>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  startIcon={<SettingsTwoTone />}
+                  sx={{ ml: 4 }}
+                >
+                  <Link to="/signup">Annie</Link>
+                </Button>
+                <Button
+                  variant="outlined"
+                  color="inherit"
+                  endIcon={<LogoutTwoTone />}
+                  sx={{ ml: 4 }}
+                >
+                  <Link to="/signup">Logout</Link>
+                </Button>
+              </>
+            ) : (
+              <Button
+                variant="outlined"
+                color="inherit"
+                endIcon={<AccountCircleTwoTone />}
+                sx={{ ml: 4 }}
+              >
+                <Link to="/signup">Login</Link>
+              </Button>
+            )}
           </Toolbar>
         </AppBar>
       </Box>

@@ -3,6 +3,22 @@
 
 // import EventVotingWindow from "@components/EventVotingWindow/EventVotingWindow";
 // import VotableActivitiesList from "@components/VotableActivitiesList/VotableActivitiesList";
+import theme from "@components/HomePage/theme";
+import { LocalActivityTwoTone } from "@mui/icons-material";
+import {
+  Avatar,
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -105,54 +121,97 @@ const EventView = ({ eventData, setEventData, isLoading }) => {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Box sx={{ display: "flex", height: "100vh" }}>
+          <CircularProgress color="secondary" />
+        </Box>
       ) : (
-        <>
-          <h3>{eventData.name}</h3>
-          <p>Host: {eventData.host.name}</p>
-          <p>
-            Date and Time: {new Date(eventData.eventDateTime).toLocaleString()}
-          </p>
-          {timeLeft.total > 0 ? (
-            <p>
-              Time left until voting ends: {timeLeft.days} days,{" "}
-              {timeLeft.hours} hours, {timeLeft.minutes} minutes,{" "}
-              {timeLeft.seconds} seconds
-            </p>
-          ) : (
-            <p>Voting has ended.</p>
-          )}
-          <p>Description: {eventData.description}</p>
-          <p>
-            Participants:{" "}
-            {eventData.participants
-              .map((participant) => participant.name)
-              .join(", ")}
-          </p>
-          {eventData.chosenActivity && (
-            <>
-              <h4>Chosen Activity</h4>
-              <p>{eventData.chosenActivity.activity}</p>
-            </>
-          )}
-          <h4>Activities</h4>
-          <ul>
-            {eventData.activities.map((activity) => (
-              <li key={activity._id}>
-                {activity.activity} - Votes: {activity.votes.length}
-                <button
-                  disabled={timeLeft.total <= 0}
-                  onClick={() => handleVote(activity._id)}
+        <ThemeProvider theme={theme}>
+          <Container>
+            <Box
+              display="flex"
+              justifyContent="center"
+              minHeight="100vh"
+              mt={8}
+            >
+              <div>
+                <Typography
+                  gutterBottom
+                  variant="h3"
+                  component="h3"
+                  fontFamily="Pacifico"
                 >
-                  Vote
-                </button>
-              </li>
-            ))}
-          </ul>
+                  {eventData.name}
+                </Typography>
+                <Divider sx={{ mt: 4, mb: 4 }} />
+                <Typography gutterBottom variant="h4" component="p">
+                  Host: {eventData.host.name}
+                </Typography>
+                <Typography gutterBottom variant="body1" component="p">
+                  Date and Time:{" "}
+                  {new Date(eventData.eventDateTime).toLocaleString()}
+                </Typography>
+                {timeLeft.total > 0 ? (
+                  <Typography gutterBottom variant="body1" component="p">
+                    Time left until voting ends: {timeLeft.days} days,{" "}
+                    {timeLeft.hours} hours, {timeLeft.minutes} minutes,{" "}
+                    {timeLeft.seconds} seconds
+                  </Typography>
+                ) : (
+                  <Typography gutterBottom variant="body1" component="p">
+                    Voting has ended.
+                  </Typography>
+                )}
+                <Typography gutterBottom variant="body1" component="p">
+                  Description: {eventData.description}
+                </Typography>
+                <Typography gutterBottom variant="body1" component="p">
+                  Participants:{" "}
+                  {eventData.participants
+                    .map((participant) => participant.name)
+                    .join(", ")}
+                </Typography>
+                {eventData.chosenActivity && (
+                  <>
+                    <h4>Chosen Activity</h4>
+                    <p>{eventData.chosenActivity.activity}</p>
+                  </>
+                )}
+                <Typography
+                  variant="h3"
+                  component="h3"
+                  fontFamily="Just Another Hand"
+                >
+                  Activities
+                </Typography>
+                <List>
+                  {eventData.activities.map((activity) => (
+                    <ListItem key={activity._id}>
+                      <ListItemAvatar>
+                        <Avatar>
+                          <LocalActivityTwoTone />
+                        </Avatar>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={activity.activity}
+                        secondary={activity.votes.length}
+                      />
+                      <Button
+                        variant="contained"
+                        disabled={timeLeft.total <= 0}
+                        onClick={() => handleVote(activity._id)}
+                      >
+                        Vote
+                      </Button>
+                    </ListItem>
+                  ))}
+                </List>
 
-          {/* <EventVotingWindow />
+                {/* <EventVotingWindow />
           <VotableActivitiesList /> */}
-        </>
+              </div>
+            </Box>
+          </Container>
+        </ThemeProvider>
       )}
     </div>
   );
