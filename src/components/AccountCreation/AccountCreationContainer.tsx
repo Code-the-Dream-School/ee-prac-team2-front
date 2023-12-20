@@ -13,7 +13,7 @@ const AccountCreationContainer = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState({});
-  const [isSignup, setIsSignup] = useState(true);
+  const [isSignup, setIsSignup] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = (data) => {
@@ -40,6 +40,7 @@ const AccountCreationContainer = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+
         console.log("Account created successfully:", responseData);
 
         setIsAuthenticated(true);
@@ -79,6 +80,7 @@ const AccountCreationContainer = () => {
 
       if (response.ok) {
         const responseData = await response.json();
+
         console.log("Logged in successfully!", responseData);
 
         setEmail(currentUser.email);

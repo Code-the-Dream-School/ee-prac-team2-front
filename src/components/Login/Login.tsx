@@ -79,6 +79,7 @@ const Login = ({ loginUser, onIsSignup }) => {
                 id="password"
                 name="password"
                 label="Password"
+                margin="normal"
                 value={currentUser.password}
                 onChange={handleInputChange}
               />

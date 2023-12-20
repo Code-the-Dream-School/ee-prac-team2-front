@@ -14,7 +14,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 const App = () => {
   return (
     <BrowserRouter>
-      <NavBar />
+      <NavBar isLoggedIn={true} />
       <Routes>
         <Route path="/" Component={HomePage} />
         <Route path="/about" Component={AboutPage} />
