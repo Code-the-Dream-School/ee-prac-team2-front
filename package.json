@@ -1,7 +1,6 @@
 {
-  "name": "bb-practicum-team1-front",
-  "version": "0.1.0",
-  "private": true,
+  "name": "ee-practicum-team2-front",
+  "version": "1.0.0",
   "description": "Front-End Repo for Team 2 of Emu/Echidna Practicum",
   "scripts": {
     "build": "vite build",
