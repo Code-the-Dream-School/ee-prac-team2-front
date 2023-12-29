@@ -1,13 +1,13 @@
 {
   "root": true,
   "extends": [
-    "eslint:recommended", // Eslint recommended configuration by eslint.
-    "plugin:import/recommended", // Linting of ES2015+ import/export syntax.
-    "plugin:react/recommended", // Recommended react linting configs.
-    "plugin:react-hooks/recommended", // Recommended react hooks linting configs.
-    "plugin:jsx-a11y/recommended", // Turns on a11y rules for JSX.
-    "plugin:@typescript-eslint/recommended", // Turns on rules from TypeScript-specific plugin.
-    "plugin:prettier/recommended" // Turns off all rules that are unnecessary or might conflict with Prettier.
+    "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "airbnb/hooks",
+    // Disable old rules requiring `React` import in every .jsx file.
+    "plugin:react/jsx-runtime",
+    // Turn off all rules that are unnecessary or might conflict with Prettier.
+    "plugin:prettier/recommended"
   ],
   "plugins": [
     "react",
@@ -15,59 +15,92 @@
     "jsx-a11y",
     "@typescript-eslint",
     "import",
-    "simple-import-sort" // Plugin for sorting imports in file.
+    "simple-import-sort"
   ],
   "rules": {
-    "prettier/prettier": "off", // don't highlight violations here, Prettier will fix them
-    "import/first": "warn",
-    "import/newline-after-import": "warn",
-    "import/no-duplicates": "error",
-    "import/no-named-as-default-member": "off",
+    // Automatically sort imports and exports
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
-    "react/prop-types": "off",
-    "react/react-in-jsx-scope": "off",
+    // Sort props categorically, but not alphabetically
     "react/jsx-sort-props": [
       "warn",
       {
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "ignoreCase": true,
         "reservedFirst": true,
         "noSortAlphabetically": true
       }
-    ]
+    ],
+    //    "react/prop-types": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        // Since these files are only used during dev and build steps,
+        // allow them to import from packages in `devDependencies`.
+        "devDependencies": ["*.config.*", "*.setup.*"]
+      }
+    ],
+    // Prettier will fix violations itself - ignore them in ESlint.
+    "prettier/prettier": "off",
+    // We use dangling underscores quite a bit in our mongo variables eg `_id`.
+    "no-underscore-dangle": "off",
+    // Allow unary `++` operator for loop syntax only.
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   },
   "env": {
-    "es6": true, // enable ES2015 features.
-    "browser": true, // enable use of global browser variables like `windows`.
-    "node": true // enable use of global node variables like `process`.
+    "es6": true,
+    // Enable global browser variables like `window`.
+    "browser": true,
+    // Enable global node variables like `process`.
+    "node": true
   },
-  "parser": "@typescript-eslint/parser", // Allows Eslint to understand TypeScript syntax.
+  // Allow Eslint to understand TypeScript syntax.
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.eslint.json", // Specify where to find the root tsconfig file of your project.
-    "ecmaVersion": 2021, // ECMAScript version supported in the project.
-    "sourceType": "module", // set to `module` because we ue ECMAScript modules.
+    // Root tsconfig file of the project.
+    "project": "./tsconfig.eslint.json",
+    // ECMAScript version supported in the project.
+    "ecmaVersion": 2021,
+    // We use ECMAScript modules for import/export.
+    "sourceType": "module",
     "ecmaFeatures": {
-      "jsx": true // enable jsx for React.
+      // Enable jsx for React.
+      "jsx": true
     }
   },
   "settings": {
     "react": {
-      "version": "detect" // auto-detect React version from package.json.
+      // Auto-detect React version from package.json.
+      "version": "detect"
     },
     "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"] // use typescript-eslint parser for .ts|tsx files.
+      // Typescript files need to use their own ESlint parser
+      "@typescript-eslint/parser": [".ts", ".tsx"]
     },
     "import/resolver": {
       "typescript": {
         "project": "./tsconfig.eslint.json",
-        "alwaysTryTypes": true // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`.
+        // Always try to resolve types under `<root>@types` directory,
+        // even it doesn't contain any source code.
+        "alwaysTryTypes": true
       }
     }
   },
   "overrides": [
     {
+      // All Typescript files
+      "files": ["**/*.ts?(x)"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    },
+    {
+      // Typescript React components
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    },
+    {
+      // Jest tests
       "files": ["./src/**/*.spec.ts?(x)"],
       "extends": [
         "plugin:jest/recommended",
@@ -92,10 +125,11 @@
         "testing-library/no-dom-import": "off"
       },
       "env": {
-        "jest/globals": true // enable Jest global variables.
+        "jest/globals": true
       }
     },
     {
+      // Cypress tests
       "files": ["./cypress/**/*.cy.ts"],
       "extends": ["plugin:cypress/recommended"],
       "plugins": ["cypress"],
@@ -106,7 +140,7 @@
         "cypress/no-pause": "error"
       },
       "env": {
-        "cypress/globals": true // enable Cypress global variables.
+        "cypress/globals": true
       }
     }
   ]
